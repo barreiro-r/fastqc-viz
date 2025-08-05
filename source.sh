@@ -155,7 +155,7 @@ step08_unzip_fastqc_report(){
     my_dir=${WD}/steps/step08_unzip_fastqc_report
     mkdir -p ${my_dir}
 
-    for zip_file in ${WD}/steps/step04_run_fastqc/*.zip; do
+    for zip_file in ${WD}/steps/step07_run_fastqc_exome/*.zip; do
         unzip $zip_file -d ${my_dir}
     done
 }
