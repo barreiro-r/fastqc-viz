@@ -72,15 +72,17 @@ module_content_to_tibble <- function(modules) {
       }
 
       # Convert to tibble (separate, remove #, rename, clean names)
-      new_modules[[module]][["content"]] <-
-        new_modules[[module]][["content"]] |>
-        tidyr::as_tibble() |>
-        tidyr::separate_wider_delim(value, delim = "\t", names_sep = "_") |>
-        dplyr::mutate(
-          value_1 = stringr::str_remove(value_1, pattern = "^#")
-        ) |>
-        janitor::row_to_names(1) |>
-        janitor::clean_names()
+      if (!is.null(modules[[module]]['content'][[1]])) {
+        new_modules[[module]][["content"]] <-
+          new_modules[[module]][["content"]] |>
+          tidyr::as_tibble() |>
+          tidyr::separate_wider_delim(value, delim = "\t", names_sep = "_") |>
+          dplyr::mutate(
+            value_1 = stringr::str_remove(value_1, pattern = "^#")
+          ) |>
+          janitor::row_to_names(1) |>
+          janitor::clean_names()
+      }
     }
   }
 

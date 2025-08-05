@@ -23,6 +23,7 @@ parse_fastqc <- function(fastq_data_file) {
   }
 
   # --- Core Calculation ---
-  separate_modules(fastq_data_file) |>
+  readLines(fastq_data_file) |>
+    separate_modules() |>
     module_content_to_tibble()
 }
