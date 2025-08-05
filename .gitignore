@@ -1,1 +1,4 @@
 steps/*
+/.quarto/
+_site/*
+*DS_Store
