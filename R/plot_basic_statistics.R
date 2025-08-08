@@ -23,5 +23,18 @@ plot_basic_statistics <- function(fastqc_data) {
   # --- Core Calculation ---
 
   fastqc_data$basic_statistics$content |>
-    kableExtra::kable(col.names = NULL)
+    dplyr::mutate(
+      value = dplyr::if_else(
+        measure %in% c("Total Sequences", "Sequences flagged as poor quality"),
+        as.numeric(value) |> scales::comma(),
+        value
+      )
+    ) |>
+    dplyr::mutate(
+      measure = glue::glue("<span class = 'row-title above'>{measure}</span>")
+    ) |>
+    dplyr::transmute(
+      glue::glue("{measure}{value}")
+    ) |>
+    kableExtra::kable(col.names = NULL, format = "html", escape = FALSE)
 }

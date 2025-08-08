@@ -34,6 +34,7 @@ status_to_pill <- function(status) {
         border: 1px solid {fqcviz_colors[stringr::str_c(status,"-dark")]};
         color: {fqcviz_colors[stringr::str_c(status,"-dark")]};
         letter-spacing: .75px;
+        margin-left: 1px;
       ">
         {toupper(status)}
       </span>'

@@ -105,6 +105,8 @@ span.row-title {
     font-size: 10px;
     letter-spacing: 0.25px;
     color: #65533aff;
+
+    font-weight: 500;
 }
 
 .box th, .box td {
@@ -147,5 +149,9 @@ body .page-columns {
     [screen-end]
 }
 
-
+span.row-title.above {
+    display: block;
+    font-size: 8px;
+    font-weight: 600;
+}
 
