@@ -1,6 +1,9 @@
 ---
 title: fastqc-viz
 
+format:
+  html:
+    mainfont: "DM Sans"
 execute: 
   warning: false
   message: false
@@ -23,7 +26,7 @@ fastqc_data <-
 
 ::: {.grid-container}
 
-:::: {.box}
+:::: {.box .sidebox}
 # Status Summary
 
 ```{r}
@@ -33,9 +36,6 @@ plot_status_summary(fastqc_data)
 
 ```
 
-::::
-
-:::: {.box}
 ```{r}
 #| label: Basic Statistics [title]
 #| results: asis
@@ -59,8 +59,8 @@ create_header(fastqc_data, "per_base_sequence_quality")
 
 ```{r}
 #| label: Per base sequence quality [content]
-#| fig-width: 4
-#| fig-height: 3
+#| fig-width: 3
+#| fig-height: 1.75
 
 
 fqcviz_colors <- get_color_palette()

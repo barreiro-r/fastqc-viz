@@ -37,16 +37,16 @@ plot_status_summary <- function(fastqc_data) {
     ) |>
     dplyr::rowwise() |>
     dplyr::mutate(
-      status = stringr::str_c(
-        status_to_icon(status),
-        " ",
-        stringr::str_to_sentence(status)
-      )
+      status = status_to_pill(status),
     ) |>
     dplyr::ungroup() |>
-    kableExtra::kable(col.names = NULL) |>
-    # Need this to fix a wierd space issue
-    stringr::str_replace_all(pattern = "   +", "   ") |>
-    stringr::str_replace_all(pattern = "---+", "---") |>
-    cat(sep = "\n")
+    dplyr::mutate(
+      module = glue::glue(
+        '<span class = "row-title">{module}</span>'
+      )
+    ) |>
+    dplyr::transmute(
+      stringr::str_c(status, " ", module)
+    ) |>
+    kableExtra::kable(col.names = NULL, format = "html", escape = FALSE)
 }

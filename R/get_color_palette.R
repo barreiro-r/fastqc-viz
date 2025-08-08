@@ -32,9 +32,15 @@ get_color_palette <- function() {
     "warm_grey4" = "#c4b49fff",
     "warm_grey5" = "#e7e2dbff",
 
+    "pass-light" = "#afe0b7ff",
     "pass" = "#4ba359ff",
+    "pass-dark" = "#2f6638ff",
+    "warn-light" = "#e8d28fff",
     "warn" = "#eab30dff",
-    "fail" = "#d65d3eff"
+    "warn-dark" = "#8d6c08ff",
+    "fail-light" = "#f0c6bcff",
+    "fail" = "#d65d3eff",
+    "fail-dark" = "#862a13ff"
   )
 
   return(color)

@@ -1,31 +1,71 @@
-body {
-    background-color: #e7e2dbff;
+:root {
+    --font-family: "DM Sans", sans-serif;
+    --box-padding: 0.5rem;
+
+    --blue0: #070C4B;
+    --blue1: #1d2482;
+    --blue2: #333dbe;
+    --blue3: #555cdd;
+    --blue4: #898de0;
+    --blue5: #dadcfe;
+
+    --warm_grey0: #443e36ff;
+    --warm_grey1: #65533aff;
+    --warm_grey2: #8f7a59ff;
+    --warm_grey3: #ae9878ff;
+    --warm_grey4: #c4b49fff;
+    --warm_grey5: #e7e2dbff;
+
+    --pass-light: #afe0b7ff;
+    --pass: #4ba359ff;
+    --pass-dark: #2f6638ff;
+    --warn-light: #e8d28fff;
+    --warn: #eab30dff;
+    --warn-dark: #8d6c08ff;
+    --fail-light: #f0c6bcff;
+    --fail: #d65d3eff;
+    --fail-dark: #862a13ff;
 }
 
-/* Grid Layout for the boxes */
+body {
+    background-color: var(--warm_grey5);
+}
+
 .grid-container {
     display: grid;
-    /* Create 3 equal-width columns on larger screens */
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem; /* 24px, for space between boxes */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
 }
 
-/* Box Styles */
+.box.sidebox {
+    grid-row: span 3;
+}
+
 .box {
     background-color: #ffffff;
-    padding: 1.5rem; /* 24px */
-    border: #8f7a59ff solid 1px;
+    padding: 0.5rem;
+    border: var(--warm_grey4) solid 1px;
 }
-
 
 .box h1 {
-    font-size: 1rem; /* 24px */
-    margin-bottom: 0.5rem; /* 8px */
+    font-size: 1rem;
+
     margin-top: 0px;
+    margin-left: calc(-1 * var(--box-padding)); 
+    margin-right: calc(-1 * var(--box-padding)); 
+
+    padding-bottom: var(--box-padding);
+    padding-left: var(--box-padding);
+    padding-right: var(--box-padding);
+
+    border-bottom: 1px solid var(--warm_grey4);
 }
 
-/* Tables box */
-/* 1. Remove padding from any .box that contains a table */
+.box h1:not(:first-child) {
+    padding-top: var(--box-padding);
+    border-top: 1px solid var(--warm_grey4);
+}
+
 .box:has(table) {
     padding-left: 0;
     padding-right: 0;
@@ -33,45 +73,25 @@ body {
 }
 
 .box:has(table) h1 {
-    margin-left: 1.5rem;
+    margin-left: 0rem;
+    margin-right: 0rem;
+    margin-bottom: 0rem;
 }
 
-/* 2. Basic styling for the table itself */
 .box table {
     font-size: 13px;
-    /* table-layout: fixed; */
- 
 
     width: 100%;
-    border-collapse: collapse; /* Removes space between cell borders */
-    margin-top: 0.5rem;
+    border-collapse: collapse;
+    margin-top: var(--box-padding);
 
-    border-bottom: none;
+    border-top: 0px;
+    border-bottom: 0px;
+
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
-
-/* 3. Style for table cells (header and data) */
-.box th, .box td {
-    text-align: left;
-    /* Add padding to the cells to replace the lost box padding */ 
-    padding-left: 0.3rem;
-    padding-right: 0.3rem;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-    border-bottom: 1px solid #e5e7eb; /* Light border for rows */
-}
-
-/* Add padding to the left of the first column */
-.box th:first-child, .box td:first-child {
-    padding-left: 1.5rem;
-}
-
-/* Add padding to the right of the last column */
-.box th:last-child, .box td:last-child {
-    padding-right: 1.5rem;
-}
-
-/* 4. Remove the bottom border from the very last row to prevent double lines */
 .box tr:last-child td {
     border-bottom: none;
 }
@@ -80,10 +100,33 @@ body {
     border-bottom: none;
 }
 
-/* Responsive Design: On smaller screens, stack the boxes in a single column */
+span.row-title {
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.25px;
+    color: #65533aff;
+}
+
+.box th, .box td {
+    text-align: left;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--warm_grey5);
+}
+
+.box th:first-child, .box td:first-child {
+    padding-left: var(--box-padding);
+}
+
+.box th:last-child, .box td:last-child {
+    padding-right: var(--box-padding);
+}
+
 @media (max-width: 768px) {
     .grid-container {
-        grid-template-columns: 1fr; /* 1 column */
+        grid-template-columns: 1fr;
     }
 }
 
