@@ -3,10 +3,9 @@ project:
 
 website:
   title: "fastqc-viz"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
+  search: false
+
+sidebar: false
 
 format:
   html:

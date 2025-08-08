@@ -1,0 +1,108 @@
+body {
+    background-color: #e7e2dbff;
+}
+
+/* Grid Layout for the boxes */
+.grid-container {
+    display: grid;
+    /* Create 3 equal-width columns on larger screens */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; /* 24px, for space between boxes */
+}
+
+/* Box Styles */
+.box {
+    background-color: #ffffff;
+    padding: 1.5rem; /* 24px */
+    border: #8f7a59ff solid 1px;
+}
+
+
+.box h1 {
+    font-size: 1rem; /* 24px */
+    margin-bottom: 0.5rem; /* 8px */
+    margin-top: 0px;
+}
+
+/* Tables box */
+/* 1. Remove padding from any .box that contains a table */
+.box:has(table) {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+
+.box:has(table) h1 {
+    margin-left: 1.5rem;
+}
+
+/* 2. Basic styling for the table itself */
+.box table {
+    font-size: 13px;
+    /* table-layout: fixed; */
+ 
+
+    width: 100%;
+    border-collapse: collapse; /* Removes space between cell borders */
+    margin-top: 0.5rem;
+
+    border-bottom: none;
+}
+
+
+/* 3. Style for table cells (header and data) */
+.box th, .box td {
+    text-align: left;
+    /* Add padding to the cells to replace the lost box padding */ 
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #e5e7eb; /* Light border for rows */
+}
+
+/* Add padding to the left of the first column */
+.box th:first-child, .box td:first-child {
+    padding-left: 1.5rem;
+}
+
+/* Add padding to the right of the last column */
+.box th:last-child, .box td:last-child {
+    padding-right: 1.5rem;
+}
+
+/* 4. Remove the bottom border from the very last row to prevent double lines */
+.box tr:last-child td {
+    border-bottom: none;
+}
+
+.box tr:last-child {
+    border-bottom: none;
+}
+
+/* Responsive Design: On smaller screens, stack the boxes in a single column */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* 1 column */
+    }
+}
+
+body .page-columns {
+    display: grid;
+    gap: 0;
+    grid-template-columns: 
+    [screen-start] 1.5em 
+    [screen-start-inset page-start page-start-inset body-start-outset] 0fr 
+    [body-start] 1.5em 
+    [body-content-start] 12fr 
+    [body-content-end] 0px 
+    [body-end] 35px 
+    [body-end-outset] 0px 
+    [page-end-inset] 0px 
+    [page-end] 0fr 
+    [screen-end-inset] 1.5em 
+    [screen-end]
+}
+
+
+

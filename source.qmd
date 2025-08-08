@@ -1,59 +1,70 @@
 ---
 title: fastqc-viz
+
+execute: 
+  warning: false
+  message: false
+  echo: false
+
+sidebar: false
 ---
 
-# FastQC-viz
-
-## Load functions
 ```{r}
 #| label: load functions
-purrr::walk(list.files("R", pattern = "\\.R$", full.names = TRUE), source)
-
 library(tidyverse)
+purrr::walk(list.files("R", pattern = "\\.R$", full.names = TRUE), source)
+theme_set_fastqcviz()
 ```
-
-## Load FastQC data
 ```{r}
 #| label: load and parse fasqc data
 fastqc_data <-
   parse_fastqc(fastq_data_file = "output/fastqc_reports/SRR1517848_2_fastqc.txt")
 ```
 
+::: {.grid-container}
 
-## Status summary
+:::: {.box}
+# Status Summary
+
 ```{r}
 #| label: Status summary
-fastqc_data[!names(fastqc_data) %in% "comments"] |>
-  purrr::map(~ .x[["status"]]) |>
-  tidyr::as_tibble() |>
-  tidyr::pivot_longer(
-    cols = everything(),
-    names_to = "module",
-    values_to = "status"
-  ) |>
-  dplyr::mutate(
-    module = stringr::str_to_sentence(
-      module |> stringr::str_replace_all("_", " ")
-    )
-  ) |>
-  kableExtra::kable()
+#| results: asis
+plot_status_summary(fastqc_data) 
+
 ```
 
-## Basic Statistics
+::::
+
+:::: {.box}
+```{r}
+#| label: Basic Statistics [title]
+#| results: asis
+
+create_header(fastqc_data, "basic_statistics")
+```
+
 ```{r}
 #| label: Basic Statistics
-fastqc_data$basic_statistics$content |>
-    kableExtra::kable()
+plot_basic_statistics(fastqc_data)
 ```
+::::
 
-## Per base sequence quality
-```{r}
-#| label: Per base sequence quality status
-fastqc_data$per_base_sequence_quality$status
-```
+:::: {.box}
 
 ```{r}
-#| label: Per base sequence quality content
+#| label: Per base sequence quality [title]
+#| results: asis
+create_header(fastqc_data, "per_base_sequence_quality")
+```
+
+```{r}
+#| label: Per base sequence quality [content]
+#| fig-width: 4
+#| fig-height: 3
+
+
+fqcviz_colors <- get_color_palette()
+
 data2plot <-
   fastqc_data$per_base_sequence_quality$content |>
   separate(base, into = c('start', 'end'), sep = '-') |>
@@ -61,113 +72,115 @@ data2plot <-
   rowwise() |>
   mutate(base_numeric = mean(c(start, end), na.rm = TRUE))
 
-data2plot
-
-data2plot |>
+p1 <- 
+  data2plot |>
   ggplot(aes(x = base_numeric, y = as.numeric(mean))) +
-  list(
-    annotate(
-      geom = 'rect',
-      xmin = -Inf,
-      xmax = Inf,
-      ymin = -Inf,
-      ymax = Inf,
-      fill = "white",
-      alpha = 1
-    ),
-    geom_errorbar(
-      aes(
-        x = base_numeric,
-        ymin = as.numeric(x10th_percentile),
-        ymax = as.numeric(x90th_percentile)
-      ),
-      color = "black",
-      size = .5,
-      width = .6,
-      alpha = 1
-    ),
-    geom_segment(
-      aes(
-        x = base_numeric,
-        y = as.numeric(upper_quartile),
-        yend = as.numeric(lower_quartile)
-      ),
-      color = "grey80",
-      size = 2,
-      alpha = 1
-    ),
-    annotate(
-      geom = 'rect',
-      xmin = -Inf,
-      xmax = Inf,
-      ymin = 28,
-      ymax = Inf,
-      fill = "#42B86B",
-      alpha = .3
-    ),
-    annotate(
-      geom = 'rect',
-      xmin = -Inf,
-      xmax = Inf,
-      ymin = -Inf,
-      ymax = 20,
-      fill = "#E5280A",
-      alpha = .3
-    ),
-    annotate(
-      geom = 'rect',
-      xmin = -Inf,
-      xmax = Inf,
-      ymin = 20,
-      ymax = 28,
-      fill = "#D59412",
-      alpha = .3
-    )
-  ) |>
-    ggblend::blend("xor") +
+  # Fail zone
   annotate(
-    geom = 'segment',
-    x = -Inf,
-    xend = Inf,
-    y = 20,
-    yend = 20,
-    color = "white"
+    geom = 'rect',
+    xmin = -Inf,
+    xmax = Inf,
+    ymin = -Inf,
+    ymax = 20,
+    fill = fqcviz_colors$warm_grey3,
+    alpha = .4
   ) +
+  # Warn zone
   annotate(
-    geom = 'segment',
-    x = -Inf,
-    xend = Inf,
-    y = 28,
-    yend = 28,
-    color = "white"
+    geom = 'rect',
+    xmin = -Inf,
+    xmax = Inf,
+    ymin = 20,
+    ymax = 28,
+    fill = fqcviz_colors$warm_grey4,
+    alpha = .4
   ) +
-
+  # Pass zone
+  annotate(
+    geom = 'rect',
+    xmin = -Inf,
+    xmax = Inf,
+    ymin = 28,
+    ymax = Inf,
+    fill = fqcviz_colors$warm_grey5,
+    alpha = .4
+  ) +
+  
+  # Zone delimiter
+  # fail-warn limit
+  # annotate(
+  #   geom = 'segment',
+  #   x = -Inf,
+  #   xend = Inf,
+  #   y = 20,
+  #   yend = 20,
+  #   color = "white"
+  # ) +
+  # # warn-pass limit
+  # annotate(
+  #   geom = 'segment',
+  #   x = -Inf,
+  #   xend = Inf,
+  #   y = 28,
+  #   yend = 28,
+  #   color = "white"
+  # ) +
+  
+  # main geometries
+  # boxplot whiskers
+  geom_errorbar(
+    aes(
+      x = base_numeric,
+      ymin = as.numeric(x10th_percentile),
+      ymax = as.numeric(x90th_percentile)
+    ),
+    color = fqcviz_colors$warm_grey2,
+    linewidth = .5,
+    width = .6,
+    alpha = .2
+  ) +
+  # boxpot box
+  geom_segment(
+    aes(
+      x = base_numeric,
+      y = as.numeric(upper_quartile),
+      yend = as.numeric(lower_quartile)
+    ),
+    color = fqcviz_colors$warm_grey2,
+    linewidth = 2,
+    alpha = .2
+  ) +
+  # boxplot median
   geom_errorbar(
     aes(
       x = base_numeric,
       ymin = as.numeric(median),
       ymax = as.numeric(median)
     ),
-    color = "black",
+    color = fqcviz_colors$warm_grey2,
     size = .5,
     width = 1,
     alpha = .1
   ) +
-  geom_point(size = 1) +
-  geom_line(aes(group = 1)) +
+  # main distribuition
+  geom_point(size = .5, color = fqcviz_colors$blue1) +
+  geom_line(aes(group = 1), color = fqcviz_colors$blue1) +
   scale_y_continuous(
     limits = c(0, max(as.numeric(data2plot$upper_quartile)))
   ) +
   scale_x_continuous(
-    limits = c(0, max(as.numeric(data2plot$base_numeric))+1),
+    limits = c(0, max(as.numeric(data2plot$base_numeric)) + 1),
     breaks = c(min(data2plot$base_numeric), max(data2plot$base_numeric))
   ) +
-  theme_minimal() +
-  theme(panel.grid = element_blank()) +
   labs(
-    title = "Per base sequence quality",
-    x = "Base",
+    x = "Read base position",
     y = "Quality"
   )
-    
+
+
+p1
+
 ```
+::::
+<!-- End grid container -->
+:::

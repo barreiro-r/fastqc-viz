@@ -65,6 +65,7 @@ main() {
     step07_run_fastqc_exome
     step08_unzip_fastqc_report
     step09_collect_fastqc_data
+    step10_add_quarto_iconify
 
     # --- Ending ---
     mkdir -p ${WD}/output
@@ -175,6 +176,10 @@ step09_collect_fastqc_data(){
         cp "$fastqcdata_file" "${my_dir}/${fastqc_name}.txt"
         
     done
+}
+
+step10_add_quarto_iconify(){
+    quarto add mcanouil/quarto-iconify
 }
 
 
