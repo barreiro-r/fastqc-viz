@@ -4,6 +4,7 @@ title: fastqc-viz
 format:
   html:
     mainfont: "DM Sans"
+   
 execute: 
   warning: false
   message: false
@@ -18,15 +19,15 @@ library(tidyverse)
 purrr::walk(list.files("R", pattern = "\\.R$", full.names = TRUE), source)
 theme_set_fastqcviz()
 ```
+
 ```{r}
 #| label: load and parse fasqc data
 fastqc_data <-
   parse_fastqc(fastq_data_file = "output/fastqc_reports/SRR1517848_2_fastqc.txt")
 ```
 
-::: {.grid-container}
-
-:::: {.box .sidebox}
+::::::: grid-container
+::: {.box .sidebox}
 # Status Summary
 
 ```{r}
@@ -45,12 +46,13 @@ create_header(fastqc_data, "basic_statistics")
 
 ```{r}
 #| label: Basic Statistics
+#| results: asis
 plot_basic_statistics(fastqc_data)
 ```
-::::
 
-:::: {.box}
+:::
 
+::: box
 ```{r}
 #| label: Per base sequence quality [title]
 #| results: asis
@@ -169,6 +171,7 @@ p1 <-
     limits = c(0, max(as.numeric(data2plot$upper_quartile)))
   ) +
   scale_x_continuous(
+    expand = c(0, 0),
     limits = c(0, max(as.numeric(data2plot$base_numeric)) + 1),
     breaks = c(min(data2plot$base_numeric), max(data2plot$base_numeric))
   ) +
@@ -181,6 +184,102 @@ p1 <-
 p1
 
 ```
-::::
-<!-- End grid container -->
+
 :::
+
+::: box
+```{r}
+#| label: Per base sequence content [title]
+#| results: asis
+create_header(fastqc_data, "per_sequence_quality_scores")
+```
+
+```{r}
+#| label: Per base sequence content [content]
+#| fig-width: 3
+#| fig-height: 1.75
+
+
+fqcviz_colors <- get_color_palette()
+
+data2plot <-
+  fastqc_data$per_sequence_quality_scores$content |>
+  mutate(
+    quality = as.numeric(quality),
+    count = as.numeric(count))
+
+# p1 <- 
+data2plot |>
+  ggplot(aes(x = quality, y = count)) +
+  geom_point(size = .5, color = fqcviz_colors$blue1) +
+  geom_line(aes(group = 1), color = fqcviz_colors$blue1) +
+  scale_y_continuous(labels = format_large_numbers) +
+  labs(
+    x = "Average Quality per Read (Phred score)",
+    y = "Number of Reads")
+
+
+
+```
+
+:::
+
+::: box
+```{r}
+#| label: per_base_sequence_content [title]
+#| results: asis
+create_header(fastqc_data, "per_base_sequence_content")
+```
+
+```{r}
+#| label: per_base_sequence_content [content]
+#| fig-width: 3
+#| fig-height: 1.75
+
+qcviz_colors <- get_color_palette()
+
+data2plot <-
+  fastqc_data$per_base_sequence_content$content |>
+  pivot_longer(
+    cols = c('a', 'c', 'g', 't'),
+    names_to = "nucleotide",
+    values_to = "count"
+  ) |>
+  mutate(
+    count = as.numeric(count)
+  ) |>
+  separate(base, into = c('start', 'end'), sep = '-') |>
+  mutate(across(c(start, end), as.numeric)) |>
+  rowwise() |>
+  mutate(base_numeric = mean(c(start, end), na.rm = TRUE))
+
+data2plot |>
+  ggplot(aes(x = base_numeric, y = count)) +
+  geom_line(aes(color = nucleotide), linewidth = .5) +
+  scale_y_continuous(
+    labels = format_large_numbers,
+    limits = c(0, 100),
+    expand = c(0, 0)
+  ) +
+  scale_x_continuous(
+    limits = c(0, max(data2plot$base_numeric)),
+    breaks = c(min(data2plot$base_numeric) - 1, max(data2plot$base_numeric)),
+    expand = c(0, 0)
+  ) +
+  labs(
+    x = "Position in read (bp)",
+    y = "Nucleotide Fraction (%)",
+    color = NULL
+  ) +
+  ggsci::scale_color_lancet(label = toupper) +
+  theme(
+    legend.position = c(0.5, 1),
+    legend.justification = c(0.5, 1),
+    legend.direction = "horizontal"
+  )
+```
+
+:::
+
+<!-- End grid container -->
+:::::::

@@ -27,7 +27,6 @@ status_to_icon <- function(status, add_color = TRUE) {
   )
 
   icon_status <- paste0("{{< iconify ", icon_status, " >}}")
-
   if (add_color) {
     icon_status <- paste0(
       '<span style="color:',

@@ -17,6 +17,8 @@
 #'
 #' @export
 theme_set_fastqcviz <- function() {
+  fqcviz_colors <- get_color_palette()
+
   ggplot2::theme_set(
     ggplot2::theme_minimal() +
       ggplot2::theme(
@@ -28,6 +30,10 @@ theme_set_fastqcviz <- function() {
         # axis.line.y.left = ggplot2::element_line(color = 'grey20', linewidth = .3),
         # axis.ticks.y= ggplot2::element_line(color = 'grey20', linewidth = .3),
         # panel.grid = ggplot2::element_line(linewidth = .3, color = 'grey90'),
+        panel.grid.major.y = ggplot2::element_line(
+          linewidth = .3,
+          color = fqcviz_colors[["warm_grey5"]]
+        ),
         text = ggplot2::element_text(family = "DM Sans"),
         panel.grid.major = ggplot2::element_blank(),
         panel.grid.minor = ggplot2::element_blank(),
