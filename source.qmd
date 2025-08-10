@@ -45,7 +45,7 @@ plot_status_summary(fastqc_data)
 #| label: Basic Statistics [title]
 #| results: asis
 
-create_header(fastqc_data, "basic_statistics")
+# create_header(fastqc_data, "basic_statistics")
 ```
 
 ```{r}
@@ -68,7 +68,6 @@ create_header(fastqc_data, "per_base_sequence_quality")
 #| fig-width: 3
 #| fig-height: 1.75
 
-
 fqcviz_colors <- get_color_palette()
 
 data2plot <-
@@ -78,7 +77,7 @@ data2plot <-
   rowwise() |>
   mutate(base_numeric = mean(c(start, end), na.rm = TRUE))
 
-p1 <- 
+p1 <-
   data2plot |>
   ggplot(aes(x = base_numeric, y = as.numeric(mean))) +
   # Fail zone
@@ -111,7 +110,7 @@ p1 <-
     fill = fqcviz_colors$warm_grey5,
     alpha = .4
   ) +
-  
+
   # Zone delimiter
   # fail-warn limit
   # annotate(
@@ -131,7 +130,7 @@ p1 <-
   #   yend = 28,
   #   color = "white"
   # ) +
-  
+
   # main geometries
   # boxplot whiskers
   geom_errorbar(
@@ -172,11 +171,12 @@ p1 <-
   geom_point(size = .5, color = fqcviz_colors$blue1) +
   geom_line(aes(group = 1), color = fqcviz_colors$blue1) +
   scale_y_continuous(
-    limits = c(0, max(as.numeric(data2plot$upper_quartile)))
+    limits = c(0, max(as.numeric(data2plot$upper_quartile))),
+    expand = expansion(mult = .15)
   ) +
   scale_x_continuous(
     expand = c(0, 0),
-    limits = c(0, max(as.numeric(data2plot$base_numeric)) + 1),
+    limits = c(1, max(as.numeric(data2plot$base_numeric)) + 0),
     breaks = c(min(data2plot$base_numeric), max(data2plot$base_numeric))
   ) +
   labs(
@@ -203,25 +203,28 @@ create_header(fastqc_data, "per_sequence_quality_scores")
 #| fig-width: 3
 #| fig-height: 1.75
 
-
 fqcviz_colors <- get_color_palette()
 
 data2plot <-
   fastqc_data$per_sequence_quality_scores$content |>
   mutate(
     quality = as.numeric(quality),
-    count = as.numeric(count))
+    count = as.numeric(count)
+  )
 
-# p1 <- 
+# p1 <-
 data2plot |>
   ggplot(aes(x = quality, y = count)) +
   geom_point(size = .5, color = fqcviz_colors$blue1) +
   geom_line(aes(group = 1), color = fqcviz_colors$blue1) +
-  scale_y_continuous(labels = format_large_numbers) +
+  scale_y_continuous(
+    labels = format_large_numbers,
+    expand = expansion(mult = .15)
+  ) +
   labs(
     x = "Average Quality per Read (Phred score)",
-    y = "Number of Reads")
-
+    y = "Number of Reads"
+  )
 
 
 ```
@@ -326,7 +329,10 @@ data2plot |>
     y = "Count (n)",
     color = NULL
   ) +
-  scale_y_continuous(labels = format_large_numbers) +
+  scale_y_continuous(
+    labels = format_large_numbers,
+    expand = expansion(mult = .15)
+  ) +
   scale_color_manual(
     values = c(
       "Observed" = fqcviz_colors$blue1,
@@ -334,8 +340,12 @@ data2plot |>
     )
   ) +
   scale_x_continuous(expand = c(0, 0)) +
-  theme(legend.position = c(1, 1), legend.justification = c(1, 1),legend.key.spacing.y = unit(.1, "cm"), legend.key.height = unit(.1, "cm"))
-
+  theme(
+    legend.position = c(1, 1),
+    legend.justification = c(1, 1),
+    legend.key.spacing.y = unit(.1, "cm"),
+    legend.key.height = unit(.1, "cm")
+  )
 
 ```
 
@@ -375,8 +385,12 @@ data2plot |>
     y = "N Content (%)",
     color = NULL
   ) +
-  scale_y_continuous(labels = scales::percent) +
-  scale_y_continuous(limits = c(0, 1), label = scales::percent) +
+  scale_y_continuous(
+    limits = c(0, 1),
+    breaks = seq(0, 1, .25),
+    label = scales::percent,
+    expand = expansion(mult = .15)
+  ) +
   theme(
     legend.position = c(1, 1),
     legend.justification = c(1, 1),

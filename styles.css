@@ -33,7 +33,7 @@ body {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 0.75fr 1fr 1fr 1fr;
     gap: 0.5rem;
 }
 
