@@ -41,6 +41,11 @@ body {
     grid-row: span 3;
 }
 
+.box.sidebox p {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
 .box {
     background-color: #ffffff;
     padding: 0.5rem;
@@ -164,4 +169,22 @@ span.row-title.above {
 .box img {
     width: 100%;
     margin: 0;
+}
+
+#logo {
+    max-width: 150px;
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+
+.box hr {
+    border-top: 1px solid var(--warm_grey4);
+    margin-top: var(--box-padding);
+    margin-bottom: var(--box-padding);
+    opacity: 1;
+}
+
+.title {
+    display: none;
 }

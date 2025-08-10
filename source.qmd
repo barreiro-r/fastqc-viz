@@ -1,5 +1,6 @@
 ---
 title: fastqc-viz
+title-block-banner: false
 
 format:
   html:
@@ -28,7 +29,10 @@ fastqc_data <-
 
 ::::::: grid-container
 ::: {.box .sidebox}
-# Status Summary
+
+![](images/logo-light.svg){width=100%, id="logo"}
+
+-------------
 
 ```{r}
 #| label: Status summary
@@ -280,6 +284,62 @@ data2plot |>
 ```
 
 :::
+
+::: box
+```{r}
+#| label: Per sequence GC content [title]
+#| results: asis
+create_header(fastqc_data, "per_sequence_gc_content")
+```
+
+```{r}
+#| label: Per sequence GC content [content]
+#| fig-width: 3
+#| fig-height: 1.75
+
+qcviz_colors <- get_color_palette()
+
+data2plot <-
+  fastqc_data$per_sequence_gc_content$content |>
+  mutate(
+    gc_content = as.numeric(gc_content),
+    count = as.numeric(count)
+  )
+
+theoretical_data <-
+  process_gc_data(data2plot)
+
+data2plot <-
+  data2plot |>
+  mutate(group = 'Observed') |>
+  bind_rows(
+    theoretical_data$normal_distribution_df |>
+      mutate(group = 'Theoretical')
+  ) |>
+  mutate(group = factor(group, levels = c('Theoretical', 'Observed')))
+
+data2plot |>
+  ggplot(aes(x = gc_content, y = count)) +
+  geom_line(aes(color = group), linewidth = .5) +
+  labs(
+    x = "Mean GC content (%)",
+    y = "Count (n)",
+    color = NULL
+  ) +
+  scale_y_continuous(labels = format_large_numbers) +
+  scale_color_manual(
+    values = c(
+      "Observed" = fqcviz_colors$blue1,
+      "Theoretical" = fqcviz_colors$warm_grey4
+    )
+  ) +
+  theme(legend.position = c(1, 1), legend.justification = c(1, 1),legend.key.spacing.y = unit(.1, "cm"), legend.key.height = unit(.1, "cm"))
+
+
+```
+
+:::
+
 
 <!-- End grid container -->
 :::::::

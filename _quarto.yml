@@ -4,6 +4,7 @@ project:
 website:
   title: "fastqc-viz"
   search: false
+  favicon: favicon.svg
 
 sidebar: false
 
