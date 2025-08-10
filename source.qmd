@@ -333,12 +333,67 @@ data2plot |>
       "Theoretical" = fqcviz_colors$warm_grey4
     )
   ) +
+  scale_x_continuous(expand = c(0, 0)) +
   theme(legend.position = c(1, 1), legend.justification = c(1, 1),legend.key.spacing.y = unit(.1, "cm"), legend.key.height = unit(.1, "cm"))
 
 
 ```
 
 :::
+
+::: box
+```{r}
+#| label: Per base N content [title]
+#| results: asis
+create_header(fastqc_data, "per_base_n_content")
+```
+
+```{r}
+#| label: Per base N content [content]
+#| fig-width: 3
+#| fig-height: 1.75
+
+qcviz_colors <- get_color_palette()
+
+data2plot <-
+  fastqc_data$per_base_n_content$content |>
+  separate(base, into = c('start', 'end'), sep = '-') |>
+  mutate(across(c(start, end), as.numeric)) |>
+  rowwise() |>
+  mutate(base_numeric = mean(c(start, end), na.rm = TRUE)) |>
+  transmute(
+    base_numeric = base_numeric,
+    n_count = as.numeric(n_count) / 100
+  )
+
+
+data2plot |>
+  ggplot(aes(x = base_numeric, y = n_count)) +
+  geom_line(linewidth = .5, color = fqcviz_colors$blue1) +
+  labs(
+    x = "Position in read (bp)",
+    y = "N Content (%)",
+    color = NULL
+  ) +
+  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(limits = c(0, 1), label = scales::percent) +
+  theme(
+    legend.position = c(1, 1),
+    legend.justification = c(1, 1),
+    legend.key.spacing.y = unit(.1, "cm"),
+    legend.key.height = unit(.1, "cm")
+  ) +
+  scale_x_continuous(
+    limits = c(0, max(data2plot$base_numeric)),
+    breaks = c(min(data2plot$base_numeric) - 1, max(data2plot$base_numeric)),
+    expand = c(0, 0)
+  )
+
+
+```
+
+:::
+
 
 
 <!-- End grid container -->
