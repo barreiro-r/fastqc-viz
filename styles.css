@@ -188,3 +188,17 @@ span.row-title.above {
 .title {
     display: none;
 }
+
+span#overrepresented-sequences-count {
+    font-size: 100px;
+    font-weight: 200;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    line-height: .8;
+}
+
+.overrepresented-sequences p {
+    text-align: center;
+    margin-top: 50px;
+}

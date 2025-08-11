@@ -48,6 +48,8 @@ plot_status_summary(fastqc_data)
 # create_header(fastqc_data, "basic_statistics")
 ```
 
+------
+
 ```{r}
 #| label: Basic Statistics
 #| results: asis
@@ -176,8 +178,8 @@ p1 <-
   ) +
   scale_x_continuous(
     expand = c(0, 0),
-    limits = c(1, max(as.numeric(data2plot$base_numeric)) + 0),
-    breaks = c(min(data2plot$base_numeric), max(data2plot$base_numeric))
+    breaks = as.integer(seq(1, max(data2plot$base_numeric), length.out = 5)),
+    limits = c(min(data2plot$base_numeric), max(data2plot$base_numeric))
   ) +
   labs(
     x = "Read base position",
@@ -270,7 +272,7 @@ data2plot |>
   ) +
   scale_x_continuous(
     limits = c(0, max(data2plot$base_numeric)),
-    breaks = c(min(data2plot$base_numeric) - 1, max(data2plot$base_numeric)),
+    breaks = as.integer(seq(min(data2plot$base_numeric) - 1, max(data2plot$base_numeric), length.out = 5)),
     expand = c(0, 0)
   ) +
   labs(
@@ -399,7 +401,7 @@ data2plot |>
   ) +
   scale_x_continuous(
     limits = c(0, max(data2plot$base_numeric)),
-    breaks = c(min(data2plot$base_numeric) - 1, max(data2plot$base_numeric)),
+    breaks = as.integer(seq(min(data2plot$base_numeric) - 1, max(data2plot$base_numeric), length.out = 5)),
     expand = c(0, 0)
   )
 
@@ -407,6 +409,211 @@ data2plot |>
 ```
 
 :::
+
+
+::: box
+```{r}
+#| label: Sequence Length Distribution [title]
+#| results: asis
+create_header(fastqc_data, "sequence_length_distribution")
+```
+
+```{r}
+#| label: Sequence Length Distribution [content]
+#| fig-width: 3
+#| fig-height: 1.75
+
+qcviz_colors <- get_color_palette()
+
+data2plot <-
+  fastqc_data$sequence_length_distribution$content |>
+  transmute(
+    length = as.numeric(length),
+    count = as.numeric(count)
+  )
+
+
+data2plot |>
+  ggplot(aes(x = length, y = count)) +
+  geom_col(fill = fqcviz_colors$blue1) +
+  labs(
+    x = "Sequence Length (bp)",
+    y = "Sequences (N)",
+    color = NULL
+  ) +
+  scale_y_continuous(
+    label = format_large_numbers,
+    expand = c(0,0)
+  ) +
+  theme(
+    legend.position = c(1, 1),
+    legend.justification = c(1, 1),
+    legend.key.spacing.y = unit(.1, "cm"),
+    legend.key.height = unit(.1, "cm")
+  ) +
+  scale_x_continuous(
+    expand = expansion(add = 3),
+    breaks = seq(min(data2plot$length), max(data2plot$length), 1)
+  )
+
+
+```
+
+:::
+
+
+::: box
+```{r}
+#| label: Sequence duplication levels [title]
+#| results: asis
+create_header(fastqc_data, "sequence_duplication_levels")
+```
+
+```{r}
+#| label: Sequence duplication levels [content]
+#| fig-width: 3
+#| fig-height: 1.75
+
+qcviz_colors <- get_color_palette()
+
+data2plot <-
+  fastqc_data$sequence_duplication_levels$content |>
+  transmute(
+    duplication_level = fct_reorder(duplication_level, row_number()),
+    percentage_of_total = as.numeric(percentage_of_total) / 100
+  )
+
+
+data2plot |>
+  ggplot(aes(y = duplication_level, x = percentage_of_total)) +
+  geom_col(fill = fqcviz_colors$blue1) +
+  labs(
+    y = "Sequence Duplication Level",
+    x = "Sequences (%)",
+  ) +
+  scale_x_continuous(
+    expand = c(0, 0),
+    limits = c(0, 1),
+    label = scales::percent,
+  ) +
+  geom_text(
+    data = subset(data2plot, percentage_of_total == max(percentage_of_total)),
+    aes(label = scales::percent(percentage_of_total, accuracy = 0.01)),
+    hjust = 1.1,
+    size = 2,
+    color = "white"
+  ) +
+  geom_text(
+    data = subset(data2plot, percentage_of_total != max(percentage_of_total) & percentage_of_total > 0),
+    aes(label = scales::percent(percentage_of_total, accuracy = 0.01)),
+    hjust = -0.1,
+    size = 2,
+    color = fqcviz_colors$warm_grey2
+  ) +
+  scale_y_discrete(
+    expand = expansion(add = c(1.5,0))
+  ) +
+  theme(
+    legend.position = c(1, 1),
+    legend.justification = c(1, 1),
+    legend.key.spacing.y = unit(.1, "cm"),
+    legend.key.height = unit(.1, "cm"),
+    axis.text.y = element_text(hjust = 0, size = 6),
+    panel.grid.major.x = ggplot2::element_line(
+      linewidth = .3,
+      color = fqcviz_colors[["warm_grey5"]]
+    ),
+    panel.grid.major.y = ggplot2::element_blank()
+  ) 
+
+```
+
+:::
+
+
+
+::: {.box .overrepresented-sequences}
+```{r}
+#| label: Overrepresented sequences [title]
+#| results: asis
+create_header(fastqc_data, "overrepresented_sequences")
+```
+
+```{r}
+#| label: Overrepresented sequences [content]
+#| fig-width: 3
+#| fig-height: 1.75
+
+qcviz_colors <- get_color_palette()
+
+
+```
+
+<span id="overrepresented-sequences-count">`{r} length(fastqc_data$overrepresented_sequences$content)`</span> sequences
+
+:::
+
+::: {.box }
+
+```{r}
+#| label: Adapter content [title]
+#| results: asis
+create_header(fastqc_data, "adapter_content")
+```
+
+```{r}
+#| label: Adapter content [content]
+#| fig-width: 3
+#| fig-height: 1.75
+
+qcviz_colors <- get_color_palette()
+
+data2plot <-
+  fastqc_data$adapter_content$content |>
+  pivot_longer(
+    cols = -position,
+    names_to = "adapter",
+    values_to = "percentage_of_total"
+  ) |>
+  mutate(
+    percentage_of_total = as.numeric(percentage_of_total) / 100,
+    position = as.numeric(position)
+  )
+
+
+data2plot |>
+  ggplot(aes(y = percentage_of_total, x = position)) +
+  geom_line(aes(color = adapter), linewidth = .5) +
+  labs(
+    y = "Adapter Content (%)",
+    x = "Position in read (bp)",
+    color = NULL
+  ) +
+  scale_y_continuous(
+    expand = expansion(mult = .15),
+    limits = c(0, 1),
+    label = scales::percent,
+  ) +
+  scale_x_continuous(
+    expand = c(0,0),
+    limits = c(0, max(data2plot$position)),
+    breaks = as.integer(seq(0, max(data2plot$position), length.out = 5)),
+  ) +
+  theme(
+    legend.position = c(1, 1),
+    legend.justification = c(1, 1),
+    legend.key.spacing.y = unit(.1, "cm"),
+    legend.key.height = unit(.1, "cm"),
+    legend.text = element_text(size = 6),
+    axis.text.y = element_text(hjust = 0, size = 6),
+  ) +
+  ggsci::scale_color_lancet(label = function(x) stringr::str_replace_all(x, "_", " ") |> stringr::str_to_title())
+
+```
+
+:::
+
+
 
 
 
