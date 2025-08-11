@@ -77,100 +77,77 @@ data2plot <-
   separate(base, into = c('start', 'end'), sep = '-') |>
   mutate(across(c(start, end), as.numeric)) |>
   rowwise() |>
-  mutate(base_numeric = mean(c(start, end), na.rm = TRUE))
+  mutate(base_numeric = mean(c(start, end), na.rm = TRUE)) |>
+  mutate(my_mean = as.numeric(mean), my_median = as.numeric(median))
 
-p1 <-
-  data2plot |>
-  ggplot(aes(x = base_numeric, y = as.numeric(mean))) +
-  # Fail zone
-  annotate(
-    geom = 'rect',
+annotation_zone_data <-
+  tibble(
+    zone = c("fail", "warn", "pass"),
+    my_start = c(0, 20, 28),
+    my_end = c(20, 28, Inf),
+    base_numeric = 0,
+    my_mean = 0
+  )
+
+
+data2plot |>
+  ggplot(aes(x = base_numeric, y = as.numeric(my_mean))) +
+  ggpattern::geom_rect_pattern(
+    data = subset(annotation_zone_data, zone == "fail"),
     xmin = -Inf,
     xmax = Inf,
-    ymin = -Inf,
-    ymax = 20,
-    fill = fqcviz_colors$warm_grey3,
-    alpha = .4
+    aes(ymin = my_start, ymax = my_end),
+    alpha = 0,
+    pattern_alpha = .2,
+    pattern = "stripe",
+    pattern_spacing = .025,
+    pattern_angle = 45,
+    pattern_color = fqcviz_colors$fail,
   ) +
-  # Warn zone
-  annotate(
-    geom = 'rect',
+  ggpattern::geom_rect_pattern(
+    data = subset(annotation_zone_data, zone == "warn"),
     xmin = -Inf,
     xmax = Inf,
-    ymin = 20,
-    ymax = 28,
-    fill = fqcviz_colors$warm_grey4,
-    alpha = .4
+    aes(ymin = my_start, ymax = my_end),
+    alpha = 0,
+    pattern_alpha = .15,
+    pattern = "stripe",
+    pattern_spacing = .025,
+    pattern_angle = 45,
+    pattern_color = fqcviz_colors$warm_grey2,
   ) +
-  # Pass zone
-  annotate(
-    geom = 'rect',
-    xmin = -Inf,
-    xmax = Inf,
-    ymin = 28,
-    ymax = Inf,
-    fill = fqcviz_colors$warm_grey5,
-    alpha = .4
-  ) +
-
-  # Zone delimiter
-  # fail-warn limit
-  # annotate(
-  #   geom = 'segment',
-  #   x = -Inf,
-  #   xend = Inf,
-  #   y = 20,
-  #   yend = 20,
-  #   color = "white"
-  # ) +
-  # # warn-pass limit
-  # annotate(
-  #   geom = 'segment',
-  #   x = -Inf,
-  #   xend = Inf,
-  #   y = 28,
-  #   yend = 28,
-  #   color = "white"
-  # ) +
-
-  # main geometries
-  # boxplot whiskers
-  geom_errorbar(
-    aes(
-      x = base_numeric,
-      ymin = as.numeric(x10th_percentile),
-      ymax = as.numeric(x90th_percentile)
-    ),
-    color = fqcviz_colors$warm_grey2,
-    linewidth = .5,
-    width = .6,
-    alpha = .2
-  ) +
+# main geometries
+# boxplot whiskers
+geom_ribbon(
+  aes(
+    x = base_numeric,
+    ymin = as.numeric(x10th_percentile),
+    ymax = as.numeric(x90th_percentile)
+  ),
+  fill = fqcviz_colors$warm_grey3,
+  alpha = .1
+) +
   # boxpot box
-  geom_segment(
+  geom_ribbon(
     aes(
       x = base_numeric,
-      y = as.numeric(upper_quartile),
-      yend = as.numeric(lower_quartile)
+      ymin = as.numeric(upper_quartile),
+      ymax = as.numeric(lower_quartile)
     ),
-    color = fqcviz_colors$warm_grey2,
-    linewidth = 2,
+    fill = fqcviz_colors$warm_grey3,
     alpha = .2
   ) +
   # boxplot median
-  geom_errorbar(
+  geom_line(
     aes(
       x = base_numeric,
-      ymin = as.numeric(median),
-      ymax = as.numeric(median)
+      y = as.numeric(median),
+      group = 1
     ),
-    color = fqcviz_colors$warm_grey2,
-    size = .5,
-    width = 1,
-    alpha = .1
+    color = fqcviz_colors$warm_grey3,
+    alpha = .4,
   ) +
   # main distribuition
-  geom_point(size = .5, color = fqcviz_colors$blue1) +
   geom_line(aes(group = 1), color = fqcviz_colors$blue1) +
   scale_y_continuous(
     limits = c(0, max(as.numeric(data2plot$upper_quartile))),
@@ -187,7 +164,7 @@ p1 <-
   )
 
 
-p1
+
 
 ```
 
@@ -217,7 +194,6 @@ data2plot <-
 # p1 <-
 data2plot |>
   ggplot(aes(x = quality, y = count)) +
-  geom_point(size = .5, color = fqcviz_colors$blue1) +
   geom_line(aes(group = 1), color = fqcviz_colors$blue1) +
   scale_y_continuous(
     labels = format_large_numbers,
