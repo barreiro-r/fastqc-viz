@@ -6,7 +6,7 @@
 #' @details
 #' Create plot for "Per Sequence Quality Scores"
 #'
-#' @param NULL
+#' @param fastqc_data output from parse_fastqc()
 #'
 #' @return ggplot
 #'

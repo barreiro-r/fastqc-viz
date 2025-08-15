@@ -6,7 +6,7 @@
 #' @details
 #' [TODO]
 #'
-#' @param NULL
+#' @param fastqc_data output from parse_fastqc()
 #'
 #' @return list with colors
 #'
