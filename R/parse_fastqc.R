@@ -13,7 +13,7 @@
 #' @keywords [TODO]
 #'
 #' @examples
-#' parse_fastqc("path/to/fastqc_data.txt")
+#' parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
 #'
 #' @export
 parse_fastqc <- function(fastq_data_file) {

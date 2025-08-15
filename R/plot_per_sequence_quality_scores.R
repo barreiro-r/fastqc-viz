@@ -13,6 +13,7 @@
 #' @keywords plot
 #'
 #' @examples
+#' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
 #' plot_per_sequence_quality_scores(fastqc_data)
 #'
 #' @export
@@ -27,8 +28,8 @@ plot_per_sequence_quality_scores <- function(fastqc_data) {
     )
 
   data2plot |>
-    ggplot2::ggplot(aes(x = quality, y = count)) +
-    ggplot2::geom_line(aes(group = 1), color = fqcviz_colors$blue1) +
+    ggplot2::ggplot(ggplot2::aes(x = quality, y = count)) +
+    ggplot2::geom_line(ggplot2::aes(group = 1), color = fqcviz_colors$blue1) +
     ggplot2::scale_y_continuous(
       labels = format_large_numbers,
       expand = ggplot2::expansion(mult = .15)

@@ -14,7 +14,7 @@
 #' @keywords [TODO]
 #'
 #' @examples
-#' lines <- readLines("fastqc_data.txt")
+#' lines <- readLines(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
 #' modules <- separate_modules(lines)
 #'
 #' @export

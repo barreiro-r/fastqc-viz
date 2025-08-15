@@ -13,6 +13,7 @@
 #' @keywords plot
 #'
 #' @examples
+#' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
 #' plot_per_base_n_content(fastqc_data)
 #'
 #' @export

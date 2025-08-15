@@ -1,19 +1,34 @@
 #' FastQC-viz: Get color palette
 #'
-#' @description
-#' [TODO]
+##' @description
+#' Fetches the official color palette used for plots and visualizations within
+#' the FastQC-viz package.
 #'
 #' @details
-#' [TODO]
+#' This function provides a consistent set of colors for visualizations. The
+#' palette includes sequential schemes (blues, warm greys) and a standard set
+#' of qualitative colors to represent FastQC status reports:
+#' \itemize{
+#'   \item **Pass**: Green tones
+#'   \item **Warn**: Yellow/Orange tones
+#'   \item **Fail**: Red tones
+#' }
+#' Each status color is available in a standard, `light`, and `dark` variant.
 #'
-#' @param NULL
+#' @return A named `list` where keys are color names (e.g., `"pass-dark"`) and
+#'   values are their corresponding hexadecimal color codes.
 #'
-#' @return list with colors
-#'
-#' @keywords [TODO]
+#' @keywords internal
 #'
 #' @examples
+#' # Get the entire color palette
 #' fqcviz_colors <- get_color_palette()
+#'
+#' # You can then access specific colors by name
+#' my_pass_color <- fqcviz_colors$pass
+#' my_fail_color <- fqcviz_colors[["fail-dark"]]
+#'
+#' print(my_pass_color)
 #'
 #' @export
 get_color_palette <- function() {

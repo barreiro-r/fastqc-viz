@@ -14,13 +14,13 @@
 #' @keywords [TODO]
 #'
 #' @examples
-#' create_header()
+#' status_to_icon("pass")
 #'
 #' @export
 status_to_icon <- function(status, add_color = TRUE) {
   fqcviz_colors <- get_color_palette()
 
-  icon_status <- case_when(
+  icon_status <- dplyr::case_when(
     status == "pass" ~ "material-symbols:check-circle-rounded",
     status == "warn" ~ "material-symbols:error",
     status == "fail" ~ "material-symbols:cancel"

@@ -13,6 +13,7 @@
 #' @keywords plot
 #'
 #' @examples
+#' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
 #' plot_sequence_length_distribution(fastqc_data)
 #'
 #' @export
@@ -43,8 +44,8 @@ plot_sequence_length_distribution <- function(fastqc_data) {
     ggplot2::theme(
       legend.position = c(1, 1),
       legend.justification = c(1, 1),
-      legend.key.spacing.y = unit(.1, "cm"),
-      legend.key.height = unit(.1, "cm")
+      legend.key.spacing.y = ggplot2::unit(.1, "cm"),
+      legend.key.height = ggplot2::unit(.1, "cm")
     ) +
     ggplot2::scale_x_continuous(
       expand = ggplot2::expansion(add = 3),

@@ -4,7 +4,7 @@
 #' Create HTML header with the Status
 #'
 #' @details
-#' [TODO]
+#' Create a icon and pretiffy name for box headers
 #'
 #' @param fastqc_data output from fastqc parser
 #' @param module_name name of the module
@@ -14,13 +14,17 @@
 #' @keywords [TODO]
 #'
 #' @examples
-#' create_header()
+#' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
+#' create_header(fastqc_data, "per_base_sequence_quality")
 #'
 #' @export
+#'
+#'
+
 create_header <- function(fastqc_data, module_name) {
   status <- fastqc_data[[module_name]]$status
 
-  icon_status <- case_when(
+  icon_status <- dplyr::case_when(
     status == "pass" ~ "material-symbols:check-circle-rounded",
     status == "warn" ~ "material-symbols:error",
     status == "fail" ~ "material-symbols:cancel"

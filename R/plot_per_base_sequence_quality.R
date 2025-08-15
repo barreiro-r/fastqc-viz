@@ -13,7 +13,8 @@
 #' @keywords [TODO]
 #'
 #' @examples
-#' plot_per_base_sequence_quality()
+#' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
+#' plot_per_base_sequence_quality(fastqc_data)
 #'
 #' @export
 plot_per_base_sequence_quality <- function(fastqc_data) {
@@ -42,12 +43,12 @@ plot_per_base_sequence_quality <- function(fastqc_data) {
     )
 
   data2plot |>
-    ggplot2::ggplot(aes(x = base_numeric, y = as.numeric(my_mean))) +
+    ggplot2::ggplot(ggplot2::aes(x = base_numeric, y = as.numeric(my_mean))) +
     ggpattern::geom_rect_pattern(
       data = subset(annotation_zone_data, zone == "fail"),
       xmin = -Inf,
       xmax = Inf,
-      aes(ymin = my_start, ymax = my_end),
+      ggplot2::aes(ymin = my_start, ymax = my_end),
       alpha = 0,
       pattern_alpha = .2,
       pattern = "stripe",
@@ -59,7 +60,7 @@ plot_per_base_sequence_quality <- function(fastqc_data) {
       data = subset(annotation_zone_data, zone == "warn"),
       xmin = -Inf,
       xmax = Inf,
-      aes(ymin = my_start, ymax = my_end),
+      ggplot2::aes(ymin = my_start, ymax = my_end),
       alpha = 0,
       pattern_alpha = .15,
       pattern = "stripe",
@@ -70,7 +71,7 @@ plot_per_base_sequence_quality <- function(fastqc_data) {
     # main geometries
     # boxplot whiskers
     ggplot2::geom_ribbon(
-      aes(
+      ggplot2::aes(
         x = base_numeric,
         ymin = as.numeric(x10th_percentile),
         ymax = as.numeric(x90th_percentile)
@@ -80,7 +81,7 @@ plot_per_base_sequence_quality <- function(fastqc_data) {
     ) +
     # boxpot box
     ggplot2::geom_ribbon(
-      aes(
+      ggplot2::aes(
         x = base_numeric,
         ymin = as.numeric(upper_quartile),
         ymax = as.numeric(lower_quartile)
@@ -90,7 +91,7 @@ plot_per_base_sequence_quality <- function(fastqc_data) {
     ) +
     # boxplot median
     ggplot2::geom_line(
-      aes(
+      ggplot2::aes(
         x = base_numeric,
         y = as.numeric(median),
         group = 1
@@ -99,10 +100,10 @@ plot_per_base_sequence_quality <- function(fastqc_data) {
       alpha = .4,
     ) +
     # main distribuition
-    ggplot2::geom_line(aes(group = 1), color = fqcviz_colors$blue1) +
+    ggplot2::geom_line(ggplot2::aes(group = 1), color = fqcviz_colors$blue1) +
     ggplot2::scale_y_continuous(
       limits = c(0, max(as.numeric(data2plot$upper_quartile))),
-      expand = expansion(mult = .15)
+      expand = ggplot2::expansion(mult = .15)
     ) +
     ggplot2::scale_x_continuous(
       expand = c(0, 0),

@@ -14,7 +14,7 @@
 #' @keywords [TODO]
 #'
 #' @examples
-#' create_header()
+#' status_to_pill("pass")
 #'
 #' @export
 status_to_pill <- function(status) {

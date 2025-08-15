@@ -13,6 +13,7 @@
 #' @keywords plot
 #'
 #' @examples
+#' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
 #' plot_per_sequence_gc_content(fastqc_data)
 #'
 #' @export
@@ -34,21 +35,21 @@ plot_per_sequence_gc_content <- function(fastqc_data) {
     dplyr::mutate(group = 'Observed') |>
     dplyr::bind_rows(
       theoretical_data$normal_distribution_df |>
-        mutate(group = 'Theoretical')
+        dplyr::mutate(group = 'Theoretical')
     ) |>
     dplyr::mutate(group = factor(group, levels = c('Theoretical', 'Observed')))
 
   data2plot |>
     ggplot2::ggplot(ggplot2::aes(x = gc_content, y = count)) +
     ggplot2::geom_line(ggplot2::aes(color = group), linewidth = .5) +
-    labs(
+    ggplot2::labs(
       x = "Mean GC content (%)",
       y = "Count (n)",
       color = NULL
     ) +
     ggplot2::scale_y_continuous(
       labels = format_large_numbers,
-      expand = expansion(mult = .15)
+      expand = ggplot2::expansion(mult = .15)
     ) +
     ggplot2::scale_color_manual(
       values = c(
@@ -60,7 +61,7 @@ plot_per_sequence_gc_content <- function(fastqc_data) {
     ggplot2::theme(
       legend.position = c(1, 1),
       legend.justification = c(1, 1),
-      legend.key.spacing.y = unit(.1, "cm"),
-      legend.key.height = unit(.1, "cm")
+      legend.key.spacing.y = ggplot2::unit(.1, "cm"),
+      legend.key.height = ggplot2::unit(.1, "cm")
     )
 }

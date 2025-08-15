@@ -60,7 +60,7 @@ process_gc_data <- function(data) {
 
   # 1. Calculate the weighted mean
   # The weighted.mean function is ideal for this.
-  mean_val <- weighted.mean(data$gc_content, data$count)
+  mean_val <- stats::weighted.mean(data$gc_content, data$count)
   mode_val <- data$gc_content[data$count == max(data$count)]
 
   # 2. Calculate the weighted standard deviation

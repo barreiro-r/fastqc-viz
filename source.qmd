@@ -17,7 +17,7 @@ sidebar: false
 ```{r}
 #| label: load functions
 library(tidyverse)
-purrr::walk(list.files("R", pattern = "\\.R$", full.names = TRUE), source)
+devtools::load_all()
 theme_set_fastqcviz()
 ```
 
@@ -77,13 +77,13 @@ plot_per_base_sequence_quality(fastqc_data)
 
 ::: box
 ```{r}
-#| label: Per base sequence content [title]
+#| label: Per sequence quality scores [title]
 #| results: asis
 create_header(fastqc_data, "per_sequence_quality_scores")
 ```
 
 ```{r}
-#| label: Per base sequence content [content]
+#| label: Per sequence quality scores [content]
 #| fig-width: 3
 #| fig-height: 1.75
 

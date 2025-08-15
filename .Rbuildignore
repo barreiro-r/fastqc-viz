@@ -1,0 +1,13 @@
+^LICENSE\.md$
+_extensions/*
+_site/*
+.quarto/*
+_quarto.yml
+.gitignore
+favicon.svg
+images
+output
+source.qmd
+source.sh
+steps
+styles.css

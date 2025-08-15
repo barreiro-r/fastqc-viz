@@ -13,6 +13,7 @@
 #' @keywords plot
 #'
 #' @examples
+#' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
 #' plot_adapter_content(fastqc_data)
 #'
 #' @export
@@ -26,21 +27,30 @@ plot_adapter_content <- function(fastqc_data) {
       names_to = "adapter",
       values_to = "percentage_of_total"
     ) |>
+    tidyr::separate(
+      position,
+      into = c('start', 'end'),
+      sep = '-',
+      fill = 'left'
+    ) |>
+    dplyr::mutate(dplyr::across(c(start, end), as.numeric)) |>
+    dplyr::rowwise() |>
+    dplyr::mutate(position_numeric = mean(c(start, end), na.rm = TRUE)) |>
     dplyr::mutate(
       percentage_of_total = as.numeric(percentage_of_total) / 100,
-      position = as.numeric(position)
+      position = as.numeric(position_numeric)
     )
 
   data2plot |>
-    ggplot2::ggplot(aes(y = percentage_of_total, x = position)) +
-    ggplot2::geom_line(aes(color = adapter), linewidth = .5) +
+    ggplot2::ggplot(ggplot2::aes(y = percentage_of_total, x = position)) +
+    ggplot2::geom_line(ggplot2::aes(color = adapter), linewidth = .5) +
     ggplot2::labs(
       y = "Adapter Content (%)",
       x = "Position in read (bp)",
       color = NULL
     ) +
     ggplot2::scale_y_continuous(
-      expand = expansion(mult = .15),
+      expand = ggplot2::expansion(mult = .15),
       limits = c(0, 1),
       label = scales::percent,
     ) +
