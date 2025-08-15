@@ -94,57 +94,17 @@ plot_per_sequence_quality_scores(fastqc_data)
 
 ::: box
 ```{r}
-#| label: per_base_sequence_content [title]
+#| label: Per Base Sequence Content [title]
 #| results: asis
 create_header(fastqc_data, "per_base_sequence_content")
 ```
 
 ```{r}
-#| label: per_base_sequence_content [content]
+#| label: Per Base Sequence Content [content]
 #| fig-width: 3
 #| fig-height: 1.75
 
-qcviz_colors <- get_color_palette()
-
-data2plot <-
-  fastqc_data$per_base_sequence_content$content |>
-  pivot_longer(
-    cols = c('a', 'c', 'g', 't'),
-    names_to = "nucleotide",
-    values_to = "count"
-  ) |>
-  mutate(
-    count = as.numeric(count)
-  ) |>
-  separate(base, into = c('start', 'end'), sep = '-') |>
-  mutate(across(c(start, end), as.numeric)) |>
-  rowwise() |>
-  mutate(base_numeric = mean(c(start, end), na.rm = TRUE))
-
-data2plot |>
-  ggplot(aes(x = base_numeric, y = count)) +
-  geom_line(aes(color = nucleotide), linewidth = .5) +
-  scale_y_continuous(
-    labels = format_large_numbers,
-    limits = c(0, 100),
-    expand = c(0, 0)
-  ) +
-  scale_x_continuous(
-    limits = c(0, max(data2plot$base_numeric)),
-    breaks = as.integer(seq(min(data2plot$base_numeric) - 1, max(data2plot$base_numeric), length.out = 5)),
-    expand = c(0, 0)
-  ) +
-  labs(
-    x = "Position in read (bp)",
-    y = "Nucleotide Fraction (%)",
-    color = NULL
-  ) +
-  ggsci::scale_color_lancet(label = toupper) +
-  theme(
-    legend.position = c(0.5, 1),
-    legend.justification = c(0.5, 1),
-    legend.direction = "horizontal"
-  )
+plot_per_base_sequence_content(fastqc_data)
 ```
 
 :::
