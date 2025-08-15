@@ -70,7 +70,7 @@ create_header(fastqc_data, "per_base_sequence_quality")
 #| fig-width: 3
 #| fig-height: 1.75
 
-plot_per_base_sequence_quality(fastqc_data)
+x1 <- plot_per_base_sequence_quality(fastqc_data)
 ```
 
 :::
@@ -87,29 +87,7 @@ create_header(fastqc_data, "per_sequence_quality_scores")
 #| fig-width: 3
 #| fig-height: 1.75
 
-fqcviz_colors <- get_color_palette()
-
-data2plot <-
-  fastqc_data$per_sequence_quality_scores$content |>
-  mutate(
-    quality = as.numeric(quality),
-    count = as.numeric(count)
-  )
-
-# p1 <-
-data2plot |>
-  ggplot(aes(x = quality, y = count)) +
-  geom_line(aes(group = 1), color = fqcviz_colors$blue1) +
-  scale_y_continuous(
-    labels = format_large_numbers,
-    expand = expansion(mult = .15)
-  ) +
-  labs(
-    x = "Average Quality per Read (Phred score)",
-    y = "Number of Reads"
-  )
-
-
+plot_per_sequence_quality_scores(fastqc_data)
 ```
 
 :::
