@@ -17,7 +17,7 @@
 #'
 #' @export
 plot_per_base_sequence_content <- function(fastqc_data) {
-  qcviz_colors <- get_color_palette()
+  fqcviz_colors <- get_color_palette()
 
   data2plot <-
     fastqc_data$per_base_sequence_content$content |>

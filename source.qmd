@@ -138,47 +138,7 @@ create_header(fastqc_data, "per_base_n_content")
 #| fig-width: 3
 #| fig-height: 1.75
 
-qcviz_colors <- get_color_palette()
-
-data2plot <-
-  fastqc_data$per_base_n_content$content |>
-  separate(base, into = c('start', 'end'), sep = '-') |>
-  mutate(across(c(start, end), as.numeric)) |>
-  rowwise() |>
-  mutate(base_numeric = mean(c(start, end), na.rm = TRUE)) |>
-  transmute(
-    base_numeric = base_numeric,
-    n_count = as.numeric(n_count) / 100
-  )
-
-
-data2plot |>
-  ggplot(aes(x = base_numeric, y = n_count)) +
-  geom_line(linewidth = .5, color = fqcviz_colors$blue1) +
-  labs(
-    x = "Position in read (bp)",
-    y = "N Content (%)",
-    color = NULL
-  ) +
-  scale_y_continuous(
-    limits = c(0, 1),
-    breaks = seq(0, 1, .25),
-    label = scales::percent,
-    expand = expansion(mult = .15)
-  ) +
-  theme(
-    legend.position = c(1, 1),
-    legend.justification = c(1, 1),
-    legend.key.spacing.y = unit(.1, "cm"),
-    legend.key.height = unit(.1, "cm")
-  ) +
-  scale_x_continuous(
-    limits = c(0, max(data2plot$base_numeric)),
-    breaks = as.integer(seq(min(data2plot$base_numeric) - 1, max(data2plot$base_numeric), length.out = 5)),
-    expand = c(0, 0)
-  )
-
-
+plot_per_base_n_content(fastqc_data)
 ```
 
 :::
