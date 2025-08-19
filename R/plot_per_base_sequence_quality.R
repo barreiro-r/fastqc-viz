@@ -1,16 +1,16 @@
 #' FastQC-viz: Theme set fastqcviz
 #'
 #' @description
-#' Update main theme
+#' Create plot for "Per base sequence quality"
 #'
 #' @details
-#' [TODO]
+#' Create plot for "Per base sequence quality"
 #'
 #' @param fastqc_data output from parse_fastqc()
 #'
-#' @return list with colors
+#' @return ggplot
 #'
-#' @keywords [TODO]
+#' @keywords plot
 #'
 #' @examples
 #' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))

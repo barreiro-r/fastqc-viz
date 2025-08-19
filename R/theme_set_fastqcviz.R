@@ -6,8 +6,6 @@
 #' @details
 #' Update ggplot theme settings for all plots.
 #'
-#' @return list with colors
-#'
 #' @keywords internal
 #'
 #' @examples
