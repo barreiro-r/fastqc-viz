@@ -1,5 +1,6 @@
 #' Process GC Content Data
 #'
+#' @description
 #' This function calculates the weighted mean and standard deviation from a data frame
 #' containing values ('gc_content') and their frequencies ('count'). It then generates
 #' a new data frame with a normally distributed sample based on these statistics.

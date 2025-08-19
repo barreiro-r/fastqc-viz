@@ -11,7 +11,7 @@
 #'
 #' @return list with modules, each module has content, status; The list also contains comments
 #'
-#' @keywords [TODO]
+#' @keywords internal
 #'
 #' @examples
 #' lines <- readLines(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))

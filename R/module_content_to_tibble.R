@@ -10,7 +10,7 @@
 #'
 #' @return list of modules with content converted to a tibble
 #'
-#' @keywords [TODO]
+#' @keywords internal
 #'
 #' @examples
 #' lines <- readLines(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))

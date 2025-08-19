@@ -8,9 +8,9 @@
 #'
 #' @param fastqc_data output from fastqc parser
 #'
-#' @return [TODO]
+#' @return html table;
 #'
-#' @keywords [TODO]
+#' @keywords html_formater
 #'
 #' @examples
 #' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))

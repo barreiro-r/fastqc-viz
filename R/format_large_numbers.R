@@ -10,6 +10,8 @@
 #'
 #' @return A character vector of formatted numbers.
 #'
+#' @keywords internal
+#'
 #' @examples
 #' format_large_numbers(1234)
 #' #> [1] "1 K"

@@ -1,15 +1,14 @@
 #' FastQC-viz: Theme set fastqcviz
 #'
 #' @description
-#' Update main theme
+#' Update main theme.
 #'
 #' @details
-#' [TODO]
-#'
+#' Update ggplot theme settings for all plots.
 #'
 #' @return list with colors
 #'
-#' @keywords [TODO]
+#' @keywords internal
 #'
 #' @examples
 #' theme_set_fastqcviz()

@@ -10,7 +10,6 @@
 #'
 #' @return list with the modules content and status
 #'
-#' @keywords [TODO]
 #'
 #' @examples
 #' parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))

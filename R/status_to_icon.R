@@ -11,7 +11,7 @@
 #'
 #' @return status
 #'
-#' @keywords [TODO]
+#' @keywords html_formater
 #'
 #' @examples
 #' status_to_icon("pass")
