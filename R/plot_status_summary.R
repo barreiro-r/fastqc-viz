@@ -1,3 +1,5 @@
+#' FastQC-viz: Status Summary
+#'
 #' @description
 #' Generates an HTML summary table of the pass/warn/fail status for each
 #' FastQC module.

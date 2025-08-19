@@ -22,4 +22,3 @@ Read the fastqc_data.txt file and return a list with the modules content and sta
 parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
 
 }
-\keyword{[TODO]}

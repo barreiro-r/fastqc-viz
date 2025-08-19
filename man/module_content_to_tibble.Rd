@@ -24,4 +24,4 @@ modules <- separate_modules(lines)
 modules <- module_content_to_tibble(modules)
 
 }
-\keyword{[TODO]}
+\keyword{internal}

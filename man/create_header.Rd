@@ -25,4 +25,4 @@ fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", pac
 create_header(fastqc_data, "per_base_sequence_quality")
 
 }
-\keyword{[TODO]}
+\keyword{html_formater}

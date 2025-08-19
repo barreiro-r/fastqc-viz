@@ -10,7 +10,7 @@ plot_basic_statistics(fastqc_data)
 \item{fastqc_data}{output from parse_fastqc()}
 }
 \value{
-[TODO]
+html table
 }
 \description{
 [TODO]
@@ -23,4 +23,4 @@ fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", pac
 plot_status_summary(fastqc_data)
 
 }
-\keyword{[TODO]}
+\keyword{table}

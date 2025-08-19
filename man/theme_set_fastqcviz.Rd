@@ -6,17 +6,14 @@
 \usage{
 theme_set_fastqcviz()
 }
-\value{
-list with colors
-}
 \description{
-Update main theme
+Update main theme.
 }
 \details{
-[TODO]
+Update ggplot theme settings for all plots.
 }
 \examples{
 theme_set_fastqcviz()
 
 }
-\keyword{[TODO]}
+\keyword{internal}

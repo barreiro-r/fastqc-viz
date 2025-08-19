@@ -24,4 +24,4 @@ lines <- readLines(system.file("extdata", "SRR622457_2_fastqc.txt", package = "f
 modules <- separate_modules(lines)
 
 }
-\keyword{[TODO]}
+\keyword{internal}

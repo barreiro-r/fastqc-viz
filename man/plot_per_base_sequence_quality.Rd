@@ -10,17 +10,17 @@ plot_per_base_sequence_quality(fastqc_data)
 \item{fastqc_data}{output from parse_fastqc()}
 }
 \value{
-list with colors
+ggplot
 }
 \description{
-Update main theme
+Create plot for "Per base sequence quality"
 }
 \details{
-[TODO]
+Create plot for "Per base sequence quality"
 }
 \examples{
 fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
 plot_per_base_sequence_quality(fastqc_data)
 
 }
-\keyword{[TODO]}
+\keyword{plot}

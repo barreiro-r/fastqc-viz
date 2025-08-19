@@ -15,13 +15,20 @@ status_to_pill(status, add_color = TRUE)
 status
 }
 \description{
-Create HTML header with the Status
+Constructs a string containing an HTML `<span>` element with inline CSS to
+render a status indicator badge.
 }
 \details{
-[TODO]
+This is a helper function that translates a status string ("pass", "warn",
+or "fail") into a formatted HTML element. The function's primary logic is
+string interpolation via the `glue` package.
+
+The visual appearance of the `<span>` is defined entirely by inline CSS and
+includes properties for font size, padding, background color, border, text
+color, and spacing.
 }
 \examples{
 status_to_pill("pass")
 
 }
-\keyword{[TODO]}
+\keyword{html_formater}

@@ -18,10 +18,16 @@ status
 Create HTML header with the Status
 }
 \details{
-[TODO]
+This function generates an HTML `<span>` element styled to look like a status
+pill or badge, similar to those used in the FastQC report interface.
+
+The appearance of the pill is determined by the `status` argument:
+- **`"pass"`**: Typically styled in green.
+- **`"warn"`**: Typically styled in yellow.
+- **`"fail"`**: Typically styled in red.
 }
 \examples{
 status_to_icon("pass")
 
 }
-\keyword{[TODO]}
+\keyword{html_formater}
