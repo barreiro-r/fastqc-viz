@@ -37,19 +37,19 @@ theme_set_fastqcviz <- function() {
         text = ggplot2::element_text(family = "DM Sans"),
         panel.grid.major = ggplot2::element_blank(),
         panel.grid.minor = ggplot2::element_blank(),
-        axis.ticks.length = unit(-0.15, "cm"),
+        axis.ticks.length = ggplot2::unit(-0.15, "cm"),
         plot.background = ggplot2::element_blank(),
         plot.title.position = "plot",
         plot.title = ggplot2::element_text(size = 18, face = 'bold'),
         plot.caption = ggplot2::element_text(
           size = 8,
           color = 'grey60',
-          margin = margin(20, 0, 0, 0)
+          margin = ggplot2::margin(20, 0, 0, 0)
         ),
         plot.subtitle = ggplot2::element_text(
           size = 9,
           lineheight = 1.15,
-          margin = margin(5, 0, 15, 0)
+          margin = ggplot2::margin(5, 0, 15, 0)
         ),
         axis.title.x = ggtext::element_markdown(
           hjust = .5,

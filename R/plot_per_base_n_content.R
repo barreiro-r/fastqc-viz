@@ -48,8 +48,8 @@ plot_per_base_n_content <- function(fastqc_data) {
     ggplot2::theme(
       legend.position = c(1, 1),
       legend.justification = c(1, 1),
-      legend.key.spacing.y = unit(.1, "cm"),
-      legend.key.height = unit(.1, "cm")
+      legend.key.spacing.y = ggplot2::unit(.1, "cm"),
+      legend.key.height = ggplot2::unit(.1, "cm")
     ) +
     ggplot2::scale_x_continuous(
       limits = c(0, max(data2plot$base_numeric)),

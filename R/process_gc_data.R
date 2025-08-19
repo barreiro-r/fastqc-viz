@@ -30,6 +30,8 @@
 #' print(head(results$normal_distribution_df))
 #'
 #' print(paste("Total sum of counts in new df:", sum(results$normal_distribution_df$count)))
+#'
+#' @export
 
 process_gc_data <- function(data) {
   # --- Input Validation ---

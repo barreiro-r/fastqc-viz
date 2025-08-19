@@ -41,4 +41,5 @@ print("Head of the new normally distributed data frame:")
 print(head(results$normal_distribution_df))
 
 print(paste("Total sum of counts in new df:", sum(results$normal_distribution_df$count)))
+
 }

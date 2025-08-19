@@ -11,3 +11,5 @@ source.qmd
 source.sh
 steps
 styles.css
+
+fastqcviz-package.R

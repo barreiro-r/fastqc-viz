@@ -7,7 +7,7 @@
 plot_adapter_content(fastqc_data)
 }
 \arguments{
-\item{NULL}{}
+\item{fastqc_data}{output from parse_fastqc()}
 }
 \value{
 ggplot

@@ -1,5 +1,6 @@
 #' Format Numbers with Metric Suffixes (K, M, B, T)
 #'
+#' @description
 #' This function takes a numeric vector and converts it into a character vector,
 #' formatting large numbers with appropriate suffixes for thousands (K),
 #' millions (M), billions (B), and trillions (T).
@@ -18,6 +19,7 @@
 #'
 #' format_large_numbers(999999, digits = 2)
 #' #> [1] "1.00 M"
+#' @export
 
 format_large_numbers <- function(nums, digits = 0) {
   # Use sapply to apply the formatting logic to each number in the input vector.

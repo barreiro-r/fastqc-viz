@@ -77,12 +77,12 @@ module_content_to_tibble <- function(modules) {
           new_modules[[module]][["content"]] |>
           tidyr::as_tibble() |>
           tidyr::separate_wider_delim(
-            .data$value,
+            value,
             delim = "\t",
             names_sep = "_"
           ) |>
           dplyr::mutate(
-            value_1 = stringr::str_remove(.data$value_1, pattern = "^#")
+            value_1 = stringr::str_remove(value_1, pattern = "^#")
           ) |>
           janitor::row_to_names(1) |>
           janitor::clean_names()
