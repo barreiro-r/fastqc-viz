@@ -4,7 +4,7 @@
 \alias{status_to_pill}
 \title{FastQC-viz: Status to Pill}
 \usage{
-status_to_pill(status)
+status_to_pill(status, add_color = TRUE)
 }
 \arguments{
 \item{status}{character "pass", "warn" or "fail"}

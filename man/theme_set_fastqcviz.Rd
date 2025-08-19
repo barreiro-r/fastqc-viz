@@ -6,9 +6,6 @@
 \usage{
 theme_set_fastqcviz()
 }
-\arguments{
-\item{NULL}{}
-}
 \value{
 list with colors
 }

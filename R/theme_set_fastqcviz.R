@@ -6,7 +6,6 @@
 #' @details
 #' [TODO]
 #'
-#' @param NULL
 #'
 #' @return list with colors
 #'

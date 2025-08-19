@@ -17,7 +17,7 @@
 #' status_to_pill("pass")
 #'
 #' @export
-status_to_pill <- function(status) {
+status_to_pill <- function(status, add_color = TRUE) {
   fqcviz_colors <- get_color_palette()
 
   pill_status <- paste0(
