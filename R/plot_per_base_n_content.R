@@ -7,6 +7,7 @@
 #' Create plot for "Per base N content"
 #'
 #' @param fastqc_data output from parse_fastqc()
+#' @param output_path path to save png file
 #'
 #' @return ggplot
 #'
@@ -17,7 +18,7 @@
 #' plot_per_base_n_content(fastqc_data)
 #'
 #' @export
-plot_per_base_n_content <- function(fastqc_data) {
+plot_per_base_n_content <- function(fastqc_data, output_path = NULL) {
   fqcviz_colors <- get_color_palette()
 
   data2plot <-
@@ -31,7 +32,8 @@ plot_per_base_n_content <- function(fastqc_data) {
       n_count = as.numeric(n_count) / 100
     )
 
-  data2plot |>
+  plot <-
+    data2plot |>
     ggplot2::ggplot(ggplot2::aes(x = base_numeric, y = n_count)) +
     ggplot2::geom_line(linewidth = .5, color = fqcviz_colors$blue1) +
     ggplot2::labs(
@@ -60,4 +62,10 @@ plot_per_base_n_content <- function(fastqc_data) {
       )),
       expand = c(0, 0)
     )
+
+  if (!is.null(output_path)) {
+    ggplot2::ggsave(output_path, plot, width = 3, height = 1.75)
+  }
+
+  return(plot)
 }

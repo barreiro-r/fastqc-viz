@@ -7,6 +7,7 @@
 #' Create plot for "Per Sequence Quality Scores"
 #'
 #' @param fastqc_data output from parse_fastqc()
+#' @param output_path path to save png file
 #'
 #' @return ggplot
 #'
@@ -17,7 +18,7 @@
 #' plot_per_sequence_quality_scores(fastqc_data)
 #'
 #' @export
-plot_per_sequence_quality_scores <- function(fastqc_data) {
+plot_per_sequence_quality_scores <- function(fastqc_data, output_path = NULL) {
   fqcviz_colors <- get_color_palette()
 
   data2plot <-
@@ -27,7 +28,8 @@ plot_per_sequence_quality_scores <- function(fastqc_data) {
       count = as.numeric(count)
     )
 
-  data2plot |>
+  plot <-
+    data2plot |>
     ggplot2::ggplot(ggplot2::aes(x = quality, y = count)) +
     ggplot2::geom_line(ggplot2::aes(group = 1), color = fqcviz_colors$blue1) +
     ggplot2::scale_y_continuous(
@@ -38,4 +40,10 @@ plot_per_sequence_quality_scores <- function(fastqc_data) {
       x = "Average Quality per Read (Phred score)",
       y = "Number of Reads"
     )
+
+  if (!is.null(output_path)) {
+    ggplot2::ggsave(output_path, plot, width = 3, height = 1.75)
+  }
+
+  return(plot)
 }

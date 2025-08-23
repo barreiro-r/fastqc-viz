@@ -7,6 +7,7 @@
 #' Create plot for "Per base sequence quality"
 #'
 #' @param fastqc_data output from parse_fastqc()
+#' @param output_path path to save png file
 #'
 #' @return ggplot
 #'
@@ -17,7 +18,7 @@
 #' plot_per_base_sequence_quality(fastqc_data)
 #'
 #' @export
-plot_per_base_sequence_quality <- function(fastqc_data) {
+plot_per_base_sequence_quality <- function(fastqc_data, output_path = NULL) {
   fqcviz_colors <- get_color_palette()
 
   data2plot <-
@@ -42,7 +43,8 @@ plot_per_base_sequence_quality <- function(fastqc_data) {
       my_mean = 0
     )
 
-  data2plot |>
+  plot <-
+    data2plot |>
     ggplot2::ggplot(ggplot2::aes(x = base_numeric, y = as.numeric(my_mean))) +
     ggpattern::geom_rect_pattern(
       data = subset(annotation_zone_data, zone == "fail"),
@@ -114,4 +116,10 @@ plot_per_base_sequence_quality <- function(fastqc_data) {
       x = "Read base position",
       y = "Quality"
     )
+
+  if (!is.null(output_path)) {
+    ggplot2::ggsave(output_path, plot, width = 3, height = 1.75)
+  }
+
+  return(plot)
 }

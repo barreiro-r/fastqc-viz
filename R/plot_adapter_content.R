@@ -7,6 +7,7 @@
 #' Create plot for "Adapter content"
 #'
 #' @param fastqc_data output from parse_fastqc()
+#' @param output_path path to save png file
 #'
 #' @return ggplot
 #'
@@ -17,7 +18,7 @@
 #' plot_adapter_content(fastqc_data)
 #'
 #' @export
-plot_adapter_content <- function(fastqc_data) {
+plot_adapter_content <- function(fastqc_data, output_path = NULL) {
   fqcviz_colors <- get_color_palette()
 
   data2plot <-
@@ -41,7 +42,8 @@ plot_adapter_content <- function(fastqc_data) {
       position = as.numeric(position_numeric)
     )
 
-  data2plot |>
+  plot <-
+    data2plot |>
     ggplot2::ggplot(ggplot2::aes(y = percentage_of_total, x = position)) +
     ggplot2::geom_line(ggplot2::aes(color = adapter), linewidth = .5) +
     ggplot2::labs(
@@ -70,4 +72,10 @@ plot_adapter_content <- function(fastqc_data) {
     ggsci::scale_color_lancet(label = function(x) {
       stringr::str_replace_all(x, "_", " ") |> stringr::str_to_title()
     })
+
+  if (!is.null(output_path)) {
+    ggplot2::ggsave(output_path, plot, width = 3, height = 1.75)
+  }
+
+  return(plot)
 }

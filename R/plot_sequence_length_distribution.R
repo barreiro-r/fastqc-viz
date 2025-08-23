@@ -7,6 +7,7 @@
 #' Create plot for "Sequence Length Distribution"
 #'
 #' @param fastqc_data output from parse_fastqc()
+#' @param output_path path to save png file
 #'
 #' @return ggplot
 #'
@@ -17,7 +18,7 @@
 #' plot_sequence_length_distribution(fastqc_data)
 #'
 #' @export
-plot_sequence_length_distribution <- function(fastqc_data) {
+plot_sequence_length_distribution <- function(fastqc_data, output_path = NULL) {
   fqcviz_colors <- get_color_palette()
 
   data2plot <-
@@ -27,7 +28,8 @@ plot_sequence_length_distribution <- function(fastqc_data) {
       count = as.numeric(count)
     )
 
-  data2plot |>
+  plot <-
+    data2plot |>
     ggplot2::ggplot(ggplot2::aes(x = length, y = count)) +
     ggplot2::geom_col(fill = fqcviz_colors$blue1) +
     ggplot2::labs(
@@ -51,4 +53,10 @@ plot_sequence_length_distribution <- function(fastqc_data) {
       expand = ggplot2::expansion(add = 3),
       breaks = seq(min(data2plot$length), max(data2plot$length), 1)
     )
+
+  if (!is.null(output_path)) {
+    ggplot2::ggsave(output_path, plot, width = 3, height = 1.75)
+  }
+
+  return(plot)
 }

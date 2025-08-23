@@ -7,6 +7,7 @@
 #' Create plot for "Per sequence GC content"
 #'
 #' @param fastqc_data output from parse_fastqc()
+#' @param output_path path to save png file
 #'
 #' @return ggplot
 #'
@@ -17,7 +18,7 @@
 #' plot_per_sequence_gc_content(fastqc_data)
 #'
 #' @export
-plot_per_sequence_gc_content <- function(fastqc_data) {
+plot_per_sequence_gc_content <- function(fastqc_data, output_path = NULL) {
   fqcviz_colors <- get_color_palette()
 
   data2plot <-
@@ -39,7 +40,8 @@ plot_per_sequence_gc_content <- function(fastqc_data) {
     ) |>
     dplyr::mutate(group = factor(group, levels = c('Theoretical', 'Observed')))
 
-  data2plot |>
+  plot <-
+    data2plot |>
     ggplot2::ggplot(ggplot2::aes(x = gc_content, y = count)) +
     ggplot2::geom_line(ggplot2::aes(color = group), linewidth = .5) +
     ggplot2::labs(
@@ -64,4 +66,10 @@ plot_per_sequence_gc_content <- function(fastqc_data) {
       legend.key.spacing.y = ggplot2::unit(.1, "cm"),
       legend.key.height = ggplot2::unit(.1, "cm")
     )
+
+  if (!is.null(output_path)) {
+    ggplot2::ggsave(output_path, plot, width = 3, height = 1.75)
+  }
+
+  return(plot)
 }
