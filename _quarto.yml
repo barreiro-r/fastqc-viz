@@ -10,7 +10,7 @@ sidebar: false
 
 format:
   html:
-    # embed-resources: true
+    embed-resources: false
     theme: cosmo
     css: styles.css
     toc: true

@@ -31,12 +31,36 @@
 
 body {
     background-color: var(--warm_grey5);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-family);
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: 0.75fr 1fr 1fr 1fr;
     gap: 0.5rem;
+
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+hr {
+    display: block;
+
+    margin-left: calc(-1 * var(--box-padding)); 
+    margin-right: calc(-1 * var(--box-padding));
+
+    unicode-bidi: isolate;
+    overflow: hidden;
+    border-style: inset;
+    border-width: 1px;
 }
 
 .box.sidebox {
