@@ -2,3 +2,57 @@ url: https://barreiro-r.github.io/fastqc-viz/
 template:
   bootstrap: 5
 
+reference:
+- title: "FastQC parsing"
+  desc: >
+    Functions to parse the original FastQC.
+  contents:
+  - parse_fastqc
+  - separate_modules
+  - module_content_to_tibble
+
+- title: "Create HTML file"
+  desc: >
+    Functions to create the HTML file.
+  contents:
+  - create_fastqcviz_report
+  - create_all_plots
+
+- title: "Create HTML elements"
+  desc: >
+    Functions to create the HTML elements.
+  contents:
+  - create_header
+  - plot_basic_statistics
+  - plot_overrepresented_sequences
+  - plot_status_summary
+  - status_to_pill
+
+- title: "Plot functions"
+  desc: >
+    Functions to create the plots for the FastQC report.
+  contents:
+  - plot_adapter_content
+  - plot_per_base_n_content
+  - plot_per_base_sequence_quality
+  - plot_per_sequence_gc_content
+  - plot_per_sequence_quality_scores
+  - plot_sequence_duplication_levels
+  - plot_sequence_length_distribution
+
+- title: "Styling"
+  desc: >
+    Functions to style the plots.
+  contents:
+  - theme_set_fastqcviz
+  - get_color_palette
+
+- title: "Other functions"
+  contents:
+  - format_large_numbers
+  - process_gc_data
+  - add_all_plots_list
+
+- title: "Decrepated functions"
+  contents:
+  - status_to_pill
