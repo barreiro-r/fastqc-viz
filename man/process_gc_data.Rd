@@ -11,11 +11,11 @@ process_gc_data(data)
 }
 \value{
 A list containing three elements:
-        - `mean`: The calculated weighted mean.
-        - `sd`: The calculated weighted standard deviation.
-        - `normal_distribution_df`: A new data frame with two columns: 'gc_content'
-          (integers from 1 to 100) and 'count' (the frequency of each value
-          based on the generated normal distribution (mode, sd)).
+- \code{mean}: The calculated weighted mean.
+- \code{sd}: The calculated weighted standard deviation.
+- \code{normal_distribution_df}: A new data frame with two columns: 'gc_content'
+(integers from 1 to 100) and 'count' (the frequency of each value
+based on the generated normal distribution (mode, sd)).
 }
 \description{
 The "Per sequence GC Content" needs to create a theorecial distribution of GC content.

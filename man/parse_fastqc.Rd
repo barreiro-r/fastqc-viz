@@ -10,7 +10,7 @@ parse_fastqc(fastq_data_file)
 \item{fastq_data_file}{Path for the  fastqc_data.txt}
 }
 \value{
-list, each module has `content` and `status`.
+list, each module has \code{content} and \code{status}.
 }
 \description{
 Reads the raw fastqc_data.txt file and create a list with all of the modules.
@@ -18,18 +18,19 @@ Each module contains a list with content and status.
 }
 \details{
 These are the modules:
-
-- "basic_statistics"
-- "per_base_sequence_quality"
-- "per_sequence_quality_scores"
-- "per_base_sequence_content"
-- "per_sequence_gc_content"
-- "per_base_n_content"
-- "sequence_length_distribution"
-- "sequence_duplication_levels"
-- "overrepresented_sequences"
-- "adapter_content"
-- "comments"
+\itemize{
+\item "basic_statistics"
+\item "per_base_sequence_quality"
+\item "per_sequence_quality_scores"
+\item "per_base_sequence_content"
+\item "per_sequence_gc_content"
+\item "per_base_n_content"
+\item "sequence_length_distribution"
+\item "sequence_duplication_levels"
+\item "overrepresented_sequences"
+\item "adapter_content"
+\item "comments"
+}
 }
 \examples{
 fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))

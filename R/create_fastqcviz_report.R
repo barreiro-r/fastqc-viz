@@ -1,7 +1,7 @@
-#' FastQC-viz: Create FastQC-Viz report
+#' FastQC-viz: Create FastQC-viz report
 #'
 #' @description
-#' Create the FastQC-Viz report. FastQC-Viz contain all FastQC plots and basic statistics
+#' Create the FastQC-viz report. FastQC-viz contain all FastQC plots and basic statistics
 #' but with some design improvements.
 #'
 #' @param fastqc_path character, path to fastqc_data.txt file
@@ -10,7 +10,6 @@
 #'
 #' @return NULL, create `output_dir` with the report (`index.html`)
 #'
-#' @keywords main
 #'
 #' @examples
 #' create_fastqcviz_report(

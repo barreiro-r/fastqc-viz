@@ -16,9 +16,11 @@ First, creates the directory for all files (/images/plots) and
 run the plot function for all the plots that create .png files.
 
 Plot functions that not create .png files:
-* plot_basic_statistics()
-* plot_overrepresented_sequences()
-* plot_status_summary()
+\itemize{
+\item plot_basic_statistics()
+\item plot_overrepresented_sequences()
+\item plot_status_summary()
+}
 }
 \examples{
 fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))

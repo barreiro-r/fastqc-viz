@@ -7,7 +7,7 @@
 plot_overrepresented_sequences(fastqc_data)
 }
 \arguments{
-\item{fastqc_data}{`parse_fastqc()` output}
+\item{fastqc_data}{\code{parse_fastqc()} output}
 }
 \value{
 character, HTML elements for "Overrepresented Sequences" box.

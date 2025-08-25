@@ -7,7 +7,7 @@
 create_header(fastqc_data, module_name)
 }
 \arguments{
-\item{fastqc_data}{`fastqc_parser()`, output}
+\item{fastqc_data}{\code{fastqc_parser()}, output}
 
 \item{module_name}{character, name of the module}
 }

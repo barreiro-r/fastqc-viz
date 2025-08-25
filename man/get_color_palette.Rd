@@ -7,8 +7,8 @@
 get_color_palette()
 }
 \value{
-A named `list` where keys are color names (e.g., `"pass-dark"`) and
-  values are their corresponding hexadecimal color codes.
+A named \code{list} where keys are color names (e.g., \code{"pass-dark"}) and
+values are their corresponding hexadecimal color codes.
 }
 \description{
 Fetches the official color palette used for plots and visualizations within
@@ -19,11 +19,11 @@ This function provides a consistent set of colors for visualizations. The
 palette includes sequential schemes (blues, warm greys) and a standard set
 of qualitative colors to represent FastQC status reports:
 \itemize{
-  \item **Pass**: Green tones
-  \item **Warn**: Yellow/Orange tones
-  \item **Fail**: Red tones
+\item \strong{Pass}: Green tones
+\item \strong{Warn}: Yellow/Orange tones
+\item \strong{Fail}: Red tones
 }
-Each status color is available in a standard, `light`, and `dark` variant.
+Each status color is available in a standard, \code{light}, and \code{dark} variant.
 }
 \examples{
 # Get the entire color palette

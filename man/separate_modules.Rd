@@ -7,7 +7,7 @@
 separate_modules(lines)
 }
 \arguments{
-\item{lines}{array, `readLines(fastqc_data.txt)` output}
+\item{lines}{array, \code{readLines(fastqc_data.txt)} output}
 }
 \value{
 list, The list contains modules and each module has "content", "status"; The list also contains comments.

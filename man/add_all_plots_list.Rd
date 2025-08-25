@@ -7,7 +7,7 @@
 add_all_plots_list(fastqc_data, output_dir, embed_resources = FALSE)
 }
 \arguments{
-\item{fastqc_data}{`fastqc_parser()` output}
+\item{fastqc_data}{\code{fastqc_parser()} output}
 
 \item{output_dir}{character, output directory}
 
@@ -23,25 +23,26 @@ to each module.
 }
 \details{
 List of all header and plot variables:
-
-* var_header_per_sequence_quality_scores
-* var_plot_per_sequence_quality_scores
-* var_header_per_base_sequence_quality
-* var_plot_per_base_sequence_quality
-* var_header_per_base_sequence_content
-* var_plot_per_base_sequence_content
-* var_header_per_base_n_content
-* var_plot_per_base_n_content
-* var_header_per_sequence_gc_content
-* var_plot_per_sequence_gc_content
-* var_header_sequence_length_distribution
-* var_plot_sequence_length_distribution
-* var_header_sequence_duplication_levels
-* var_plot_sequence_duplication_levels
-* var_header_overrepresented_sequences
-* var_plot_overrepresented_sequences
-* var_header_adapter_content
-* var_plot_adapter_content
+\itemize{
+\item var_header_per_sequence_quality_scores
+\item var_plot_per_sequence_quality_scores
+\item var_header_per_base_sequence_quality
+\item var_plot_per_base_sequence_quality
+\item var_header_per_base_sequence_content
+\item var_plot_per_base_sequence_content
+\item var_header_per_base_n_content
+\item var_plot_per_base_n_content
+\item var_header_per_sequence_gc_content
+\item var_plot_per_sequence_gc_content
+\item var_header_sequence_length_distribution
+\item var_plot_sequence_length_distribution
+\item var_header_sequence_duplication_levels
+\item var_plot_sequence_duplication_levels
+\item var_header_overrepresented_sequences
+\item var_plot_overrepresented_sequences
+\item var_header_adapter_content
+\item var_plot_adapter_content
+}
 
 NOTE: only var_plot_overrepresented_sequences is not a image.
 }

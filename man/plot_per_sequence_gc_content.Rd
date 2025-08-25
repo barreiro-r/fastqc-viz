@@ -7,7 +7,7 @@
 plot_per_sequence_gc_content(fastqc_data, output_path = NULL)
 }
 \arguments{
-\item{fastqc_data}{`parse_fastqc()` output}
+\item{fastqc_data}{\code{parse_fastqc()} output}
 
 \item{output_path}{character, path to save the .png file}
 }

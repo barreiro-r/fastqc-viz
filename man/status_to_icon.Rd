@@ -16,16 +16,18 @@ status
 }
 \description{
 Create HTML header with the Status. This function is decrepted, it was used to add iconify in
-the report back when it was created with Quarto. Now it was replaced by `status_to_pill()`.
+the report back when it was created with Quarto. Now it was replaced by \code{status_to_pill()}.
 }
 \details{
-This function generates an HTML `<span>` element styled to look like a status
+This function generates an HTML \verb{<span>} element styled to look like a status
 pill or badge, similar to those used in the FastQC report interface.
 
-The appearance of the pill is determined by the `status` argument:
-- **`"pass"`**: Typically styled in green.
-- **`"warn"`**: Typically styled in yellow.
-- **`"fail"`**: Typically styled in red.
+The appearance of the pill is determined by the \code{status} argument:
+\itemize{
+\item \strong{\code{"pass"}}: Typically styled in green.
+\item \strong{\code{"warn"}}: Typically styled in yellow.
+\item \strong{\code{"fail"}}: Typically styled in red.
+}
 }
 \examples{
 status_to_icon("pass")

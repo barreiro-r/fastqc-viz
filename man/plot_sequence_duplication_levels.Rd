@@ -7,7 +7,7 @@
 plot_sequence_duplication_levels(fastqc_data, output_path = NULL)
 }
 \arguments{
-\item{fastqc_data}{`parse_fastqc()` output}
+\item{fastqc_data}{\code{parse_fastqc()} output}
 
 \item{output_path}{character, path to save the .png file}
 }

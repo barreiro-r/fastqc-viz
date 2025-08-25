@@ -12,10 +12,8 @@ source.sh
 steps
 styles.css
 
-fastqcviz_report
-fastqcviz-package.R
 ^README\.Rmd$
 ^\.github$
 ^_pkgdown\.yml$
-^docs$
 ^pkgdown$
+^docs$
