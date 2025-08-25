@@ -105,27 +105,16 @@ create_fastqcviz_report <- function(
   )
 
   # --- Read template HTML
-  template <- readr::read_file(
+  html_template <- readr::read_file(
     system.file("extdata", "report-template.html", package = "fastqcviz")
   )
 
-  # --- Add status summary
-  var_status_summary <- plot_status_summary(fastqc_data)
-  template <- stringr::str_replace(
-    template,
-    "<!-- var_status_summary -->",
-    var_status_summary
-  )
+  # ------ Modify template
+  replacements <- list()
 
-  # --- Add Basic Statistics
-  var_basic_statistics <- plot_basic_statistics(fastqc_data)
-  template <- stringr::str_replace(
-    template,
-    "<!-- var_basic_statistics -->",
-    var_basic_statistics
-  )
+  replacements$var_status_summary <- plot_status_summary(fastqc_data)
+  replacements$var_basic_statistics <- plot_basic_statistics(fastqc_data)
 
-  # --- Add Headings and plots
   modules <- c(
     "per_sequence_quality_scores",
     "per_base_sequence_quality",
@@ -139,39 +128,30 @@ create_fastqcviz_report <- function(
   )
 
   for (module in modules) {
-    var_header <- create_header(
-      fastqc_data,
-      module
-    )
-    template <- stringr::str_replace(
-      template,
-      paste0("<!-- var_header_", module, " -->"),
-      var_header
-    )
+    header_name <- paste0("var_header_", module)
+    replacements[[header_name]] <- create_header(fastqc_data, module)
 
+    plot_name <- paste0("var_plot_", module)
     if (module != "overrepresented_sequences") {
-      var_plot <- htmltools::tags$img(
-        src = paste0(
-          "images/plots/",
-          module,
-          ".png"
-        )
+      replacements[[plot_name]] <- htmltools::tags$img(
+        src = paste0("images/plots/", module, ".png")
       ) |>
         as.character()
     } else {
-      var_plot <- plot_overrepresented_sequences(fastqc_data)
+      replacements[[plot_name]] <- plot_overrepresented_sequences(fastqc_data)
     }
-
-    template <- stringr::str_replace(
-      template,
-      paste0("<!-- var_plot_", module, " -->"),
-      var_plot
-    )
   }
 
-  # Write HTML
+  final_html <- glue::glue_data(
+    replacements,
+    html_template,
+    .open = "<!--",
+    .close = "-->",
+  )
+
+  # --- Write HTML
   readr::write_file(
-    template,
+    final_html,
     paste0(output_dir, "/index.html")
   )
 }
