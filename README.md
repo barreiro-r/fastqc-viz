@@ -5,7 +5,8 @@
 
 <!-- badges: end -->
 
-> \[!NOTE\] fastqcviz is currently in development.
+> [!NOTE]
+> fastqcviz is currently in development.
 
 Every bioinformatician knows the feeling of seeing that first
 [FastQC](https://github.com/s-andrews/FastQC) report. The iconic yellow
@@ -25,10 +26,7 @@ visually appealing experience without changing the core analysis.
 **fasqcviz report** :
 [fastqcviz](https://html-preview.github.io/?url=https://github.com/barreiro-r/fastqc-viz/blob/example/example.html)
 
-<figure>
-<img src="images/before-after.png" alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
+![](images/before-after.png)
 
 ## Installation
 
