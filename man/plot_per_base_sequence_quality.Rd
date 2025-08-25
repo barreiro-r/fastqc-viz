@@ -4,10 +4,12 @@
 \alias{plot_per_base_sequence_quality}
 \title{FastQC-viz: Theme set fastqcviz}
 \usage{
-plot_per_base_sequence_quality(fastqc_data)
+plot_per_base_sequence_quality(fastqc_data, output_path = NULL)
 }
 \arguments{
 \item{fastqc_data}{output from parse_fastqc()}
+
+\item{output_path}{path to save png file}
 }
 \value{
 ggplot

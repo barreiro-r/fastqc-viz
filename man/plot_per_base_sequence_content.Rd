@@ -4,10 +4,12 @@
 \alias{plot_per_base_sequence_content}
 \title{FastQC-viz: Plot Per Base Sequence Content}
 \usage{
-plot_per_base_sequence_content(fastqc_data)
+plot_per_base_sequence_content(fastqc_data, output_path = NULL)
 }
 \arguments{
 \item{fastqc_data}{output from parse_fastqc()}
+
+\item{output_path}{path to save png file}
 }
 \value{
 ggplot

@@ -4,10 +4,12 @@
 \alias{plot_sequence_length_distribution}
 \title{FastQC-viz: Sequence Length Distribution}
 \usage{
-plot_sequence_length_distribution(fastqc_data)
+plot_sequence_length_distribution(fastqc_data, output_path = NULL)
 }
 \arguments{
 \item{fastqc_data}{output from parse_fastqc()}
+
+\item{output_path}{path to save png file}
 }
 \value{
 ggplot

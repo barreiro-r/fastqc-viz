@@ -30,4 +30,5 @@ The appearance of the pill is determined by the `status` argument:
 status_to_icon("pass")
 
 }
+\keyword{decrepted}
 \keyword{html_formater}

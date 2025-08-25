@@ -24,11 +24,11 @@
 create_header <- function(fastqc_data, module_name) {
   status <- fastqc_data[[module_name]]$status
 
-  icon_status <- dplyr::case_when(
-    status == "pass" ~ "material-symbols:check-circle-rounded",
-    status == "warn" ~ "material-symbols:error",
-    status == "fail" ~ "material-symbols:cancel"
-  )
+  # icon_status <- dplyr::case_when(
+  #   status == "pass" ~ "material-symbols:check-circle-rounded",
+  #   status == "warn" ~ "material-symbols:error",
+  #   status == "fail" ~ "material-symbols:cancel"
+  # )
 
   module_name_sentence <- stringr::str_replace_all(
     string = module_name,

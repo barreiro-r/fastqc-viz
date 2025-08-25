@@ -8,13 +8,17 @@
 #'
 #' @param fastqc_path path for the FastQC file
 #' @param output_dir output directory
+#' @param embed_resources boolean to embed resources
 #'
 #' @return Directory with HTML report
 #'
 #' @keywords main
 #'
 #' @examples
-#' create_fastqcviz_report(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
+#' create_fastqcviz_report(
+#'     system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"),
+#'     output_dir = "fastqcviz_report",
+#'     embed_resources = FALSE)
 #'
 #' @export
 #'
@@ -22,34 +26,32 @@
 
 create_fastqcviz_report <- function(
   fastqc_path,
-  output_dir = "fastqcviz_report"
+  output_dir = "fastqcviz_report",
+  embed_resources = FALSE
 ) {
   fastqc_data <- parse_fastqc(fastqc_path)
 
   dir.create(output_dir, showWarnings = FALSE)
 
   # --- Create Plots
-  dir.create(
-    paste0(output_dir, "/images/plots"),
-    showWarnings = FALSE,
-    recursive = TRUE
-  )
   create_all_plots(fastqc_data, output_dir)
 
   # --- Copy resources to output directory
-  file.copy(
-    system.file("extdata", "favicon.svg", package = "fastqcviz"),
-    output_dir
-  )
-  file.copy(
-    system.file("extdata", "styles.css", package = "fastqcviz"),
-    output_dir
-  )
+  if (!embed_resources) {
+    file.copy(
+      system.file("extdata", "favicon.svg", package = "fastqcviz"),
+      output_dir
+    )
+    file.copy(
+      system.file("extdata", "styles.css", package = "fastqcviz"),
+      output_dir
+    )
 
-  file.copy(
-    system.file("extdata", "images/logo-light.svg", package = "fastqcviz"),
-    paste0(output_dir, "/images/")
-  )
+    file.copy(
+      system.file("extdata", "images/logo-light.svg", package = "fastqcviz"),
+      paste0(output_dir, "/images/")
+    )
+  }
 
   # --- Read template HTML
   html_template <- readr::read_file(
@@ -61,34 +63,53 @@ create_fastqcviz_report <- function(
 
   replacements$var_status_summary <- plot_status_summary(fastqc_data)
   replacements$var_basic_statistics <- plot_basic_statistics(fastqc_data)
-
-  modules <- c(
-    "per_sequence_quality_scores",
-    "per_base_sequence_quality",
-    "per_base_sequence_content",
-    "per_base_n_content",
-    "per_sequence_gc_content",
-    "sequence_length_distribution",
-    "sequence_duplication_levels",
-    "overrepresented_sequences",
-    "adapter_content"
+  replacements <- c(
+    replacements,
+    add_all_plots_list(fastqc_data, output_dir, embed_resources)
   )
 
-  for (module in modules) {
-    header_name <- paste0("var_header_", module)
-    replacements[[header_name]] <- create_header(fastqc_data, module)
-
-    plot_name <- paste0("var_plot_", module)
-    if (module != "overrepresented_sequences") {
-      replacements[[plot_name]] <- htmltools::tags$img(
-        src = paste0("images/plots/", module, ".png")
-      ) |>
-        as.character()
-    } else {
-      replacements[[plot_name]] <- plot_overrepresented_sequences(fastqc_data)
-    }
+  # --- Add CSS
+  if (embed_resources) {
+    replacements[["var_css"]] <- paste0(
+      "<style>",
+      readr::read_file(
+        system.file("extdata", "styles.css", package = "fastqcviz")
+      ),
+      "</style>"
+    )
+  } else {
+    replacements[["var_css"]] <- "<link rel=\"stylesheet\" href=\"styles.css\">"
   }
 
+  # --- Add logo
+  if (embed_resources) {
+    replacements[["var_logo"]] <- paste0(
+      "<img src=\"data:image/svg+xml;base64,",
+      base64enc::base64encode(
+        system.file("extdata", "images/logo-light.svg", package = "fastqcviz")
+      ),
+      "\" id=\"logo\" class=\"img-fluid\">"
+    )
+  } else {
+    replacements[["var_logo"]] <-
+      "<img src=\"images/logo-light.svg\" id=\"logo\" class=\"img-fluid\">"
+  }
+
+  # --- Add favicon
+  if (embed_resources) {
+    replacements[["var_favicon"]] <- paste0(
+      "<link rel=\"icon\" type=\"image/svg+xml\" href=\"data:image/svg+xml;base64,",
+      base64enc::base64encode(
+        system.file("extdata", "favicon.svg", package = "fastqcviz")
+      ),
+      "\">"
+    )
+  } else {
+    replacements[["var_favicon"]] <-
+      "<link rel=\"icon\" type=\"image/svg+xml\" href=\"favicon.svg\">"
+  }
+
+  # --- Replace all
   final_html <- glue::glue_data(
     replacements,
     html_template,

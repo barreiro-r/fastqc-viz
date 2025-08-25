@@ -15,7 +15,7 @@
 #'
 #' @examples
 #' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
-#' create_all_plots(fastqc_data, output_path = "fastqcviz")
+#' create_all_plots(fastqc_data, output_dir = "fastqcviz")
 #'
 #' @export
 #'
@@ -23,6 +23,16 @@
 
 create_all_plots <- function(fastqc_data, output_dir) {
   theme_set_fastqcviz()
+
+  # Add DM Sans font
+  sysfonts::font_add_google("DM Sans", "DM Sans")
+  showtext::showtext_auto()
+
+  dir.create(
+    paste0(output_dir, "/images/plots"),
+    showWarnings = FALSE,
+    recursive = TRUE
+  )
 
   plots <- c(
     "per_base_sequence_quality",

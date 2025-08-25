@@ -4,10 +4,12 @@
 \alias{plot_per_sequence_quality_scores}
 \title{FastQC-viz: Plot Per Sequence Quality Scores}
 \usage{
-plot_per_sequence_quality_scores(fastqc_data)
+plot_per_sequence_quality_scores(fastqc_data, output_path = NULL)
 }
 \arguments{
 \item{fastqc_data}{output from parse_fastqc()}
+
+\item{output_path}{path to save png file}
 }
 \value{
 ggplot

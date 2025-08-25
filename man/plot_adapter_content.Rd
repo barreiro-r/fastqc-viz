@@ -4,10 +4,12 @@
 \alias{plot_adapter_content}
 \title{FastQC-viz: Adapter content}
 \usage{
-plot_adapter_content(fastqc_data)
+plot_adapter_content(fastqc_data, output_path = NULL)
 }
 \arguments{
 \item{fastqc_data}{output from parse_fastqc()}
+
+\item{output_path}{path to save png file}
 }
 \value{
 ggplot
