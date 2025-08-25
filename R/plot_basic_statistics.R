@@ -1,16 +1,16 @@
 #' FastQC-viz: Basic statistics
 #'
 #' @description
-#' [TODO]
-#'
-#' @details
-#' [TODO]
+#' Create base statistics HTML elements to add to the final report.
+#' The final output is a HTML table with a single column, containing
+#' the statistics name in a `<span>` element and the value.
 #'
 #' @param fastqc_data output from parse_fastqc()
 #'
 #' @return html table
 #'
 #' @keywords table
+#' @keywords internal
 #'
 #' @examples
 #' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
@@ -18,11 +18,6 @@
 #'
 #' @export
 plot_basic_statistics <- function(fastqc_data) {
-  # --- Input Validation ---
-  # [TODO]
-
-  # --- Core Calculation ---
-
   fastqc_data$basic_statistics$content |>
     dplyr::mutate(
       # ignore warning

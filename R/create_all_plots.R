@@ -1,10 +1,13 @@
-#' FastQC-viz: create_all_plots
+#' FastQC-viz: Create all plots
 #'
 #' @description
-#' Create all plots
+#' First, creates the directory for all files (/images/plots) and
+#' run the plot function for all the plots that create .png files.
 #'
-#' @details
-#' Create all plots
+#' Plot functions that not create .png files:
+#' * plot_basic_statistics()
+#' * plot_overrepresented_sequences()
+#' * plot_status_summary()
 #'
 #' @param fastqc_data output from fastqc parser
 #' @param output_dir output directory
@@ -12,6 +15,7 @@
 #' @return NULL
 #'
 #' @keywords html_formater
+#' @keywords internal
 #'
 #' @examples
 #' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))

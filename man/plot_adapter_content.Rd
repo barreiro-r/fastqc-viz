@@ -2,14 +2,14 @@
 % Please edit documentation in R/plot_adapter_content.R
 \name{plot_adapter_content}
 \alias{plot_adapter_content}
-\title{FastQC-viz: Adapter content}
+\title{FastQC-viz: Plot adapter content}
 \usage{
 plot_adapter_content(fastqc_data, output_path = NULL)
 }
 \arguments{
-\item{fastqc_data}{output from parse_fastqc()}
+\item{fastqc_data}{`parse_fastqc()` output}
 
-\item{output_path}{path to save png file}
+\item{output_path}{character, path to save the .png file}
 }
 \value{
 ggplot
@@ -17,12 +17,10 @@ ggplot
 \description{
 Create plot for "Adapter content"
 }
-\details{
-Create plot for "Adapter content"
-}
 \examples{
 fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
 plot_adapter_content(fastqc_data)
 
 }
+\keyword{internal}
 \keyword{plot}

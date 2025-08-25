@@ -1,7 +1,8 @@
 #' FastQC-viz: Status to Icon
 #'
 #' @description
-#' Create HTML header with the Status
+#' Create HTML header with the Status. This function is decrepted, it was used to add iconify in
+#' the report back when it was created with Quarto. Now it was replaced by `status_to_pill()`.
 #'
 #' @details
 #' This function generates an HTML `<span>` element styled to look like a status
@@ -12,12 +13,14 @@
 #' - **`"warn"`**: Typically styled in yellow.
 #' - **`"fail"`**: Typically styled in red.
 #'
-#' @param status character "pass", "warn" or "fail"
-#' @param add_color boolean add color
+#' @param status character, "pass", "warn" or "fail"
+#' @param add_color boolean, add color
 #'
 #' @return status
 #'
-#' @keywords html_formater decrepted
+#' @keywords html_formater
+#' @keywords internal
+#' @keywords decrepted
 #'
 #' @examples
 #' status_to_icon("pass")

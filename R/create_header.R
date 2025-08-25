@@ -1,17 +1,16 @@
-#' FastQC-viz: create_header
+#' FastQC-viz: Create Header
 #'
 #' @description
-#' Create HTML header with the Status
+#' In the FastQC-viz report, the header of each module is composed by
+#' a pill indicating the status of the module and the name of the module.
 #'
-#' @details
-#' Create a icon and pretiffy name for box headers
+#' @param fastqc_data `fastqc_parser()`, output
+#' @param module_name character, name of the module
 #'
-#' @param fastqc_data output from fastqc parser
-#' @param module_name name of the module
-#'
-#' @return a HTML header (h1)
+#' @return character, The HTML elements that compose the header
 #'
 #' @keywords html_formater
+#' @keywords internal
 #'
 #' @examples
 #' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))

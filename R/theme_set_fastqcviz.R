@@ -1,9 +1,6 @@
 #' FastQC-viz: Theme set fastqcviz
 #'
 #' @description
-#' Update main theme.
-#'
-#' @details
 #' Update ggplot theme settings for all plots.
 #'
 #' @keywords internal

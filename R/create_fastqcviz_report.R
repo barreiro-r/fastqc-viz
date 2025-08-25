@@ -1,16 +1,14 @@
-#' FastQC-viz: Create fastqcviz report
+#' FastQC-viz: Create FastQC-Viz report
 #'
 #' @description
-#' Create a fastqcviz report (HTML page)
+#' Create the FastQC-Viz report. FastQC-Viz contain all FastQC plots and basic statistics
+#' but with some design improvements.
 #'
-#' @details
-#' Create a fastqcviz report (HTML page)
+#' @param fastqc_path character, path to fastqc_data.txt file
+#' @param output_dir character, output directory
+#' @param embed_resources boolean, TRUE to embed resources into the HTML
 #'
-#' @param fastqc_path path for the FastQC file
-#' @param output_dir output directory
-#' @param embed_resources boolean to embed resources
-#'
-#' @return Directory with HTML report
+#' @return NULL, create `output_dir` with the report (`index.html`)
 #'
 #' @keywords main
 #'

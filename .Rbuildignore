@@ -12,5 +12,6 @@ source.sh
 steps
 styles.css
 
+fastqcviz_report
 fastqcviz-package.R
 ^README\.Rmd$

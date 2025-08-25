@@ -13,14 +13,14 @@ plot_basic_statistics(fastqc_data)
 html table
 }
 \description{
-[TODO]
-}
-\details{
-[TODO]
+Create base statistics HTML elements to add to the final report.
+The final output is a HTML table with a single column, containing
+the statistics name in a `<span>` element and the value.
 }
 \examples{
 fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
 plot_status_summary(fastqc_data)
 
 }
+\keyword{internal}
 \keyword{table}

@@ -32,3 +32,4 @@ status_to_pill("pass")
 
 }
 \keyword{html_formater}
+\keyword{internal}

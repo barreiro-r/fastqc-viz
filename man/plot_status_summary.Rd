@@ -36,3 +36,4 @@ plot_status_summary(fastqc_data)
 
 }
 \keyword{html_formater}
+\keyword{internal}

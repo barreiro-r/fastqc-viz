@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_all_plots.R
 \name{create_all_plots}
 \alias{create_all_plots}
-\title{FastQC-viz: create_all_plots}
+\title{FastQC-viz: Create all plots}
 \usage{
 create_all_plots(fastqc_data, output_dir)
 }
@@ -12,10 +12,13 @@ create_all_plots(fastqc_data, output_dir)
 \item{output_dir}{output directory}
 }
 \description{
-Create all plots
-}
-\details{
-Create all plots
+First, creates the directory for all files (/images/plots) and
+run the plot function for all the plots that create .png files.
+
+Plot functions that not create .png files:
+* plot_basic_statistics()
+* plot_overrepresented_sequences()
+* plot_status_summary()
 }
 \examples{
 fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
@@ -23,3 +26,4 @@ create_all_plots(fastqc_data, output_dir = "fastqcviz")
 
 }
 \keyword{html_formater}
+\keyword{internal}

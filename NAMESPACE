@@ -2,7 +2,6 @@
 
 export(add_all_plots_list)
 export(create_all_plots)
-export(create_fastqcviz_report)
 export(create_header)
 export(format_large_numbers)
 export(get_color_palette)

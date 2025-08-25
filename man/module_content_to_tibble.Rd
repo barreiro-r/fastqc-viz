@@ -2,7 +2,7 @@
 % Please edit documentation in R/module_content_to_tibble.R
 \name{module_content_to_tibble}
 \alias{module_content_to_tibble}
-\title{FastQC Parse: Module content to tibble}
+\title{FastQC-viz: Module content to tibble}
 \usage{
 module_content_to_tibble(modules)
 }
@@ -10,13 +10,12 @@ module_content_to_tibble(modules)
 \item{modules}{list, output of separate_modules()}
 }
 \value{
-list of modules with content converted to a tibble
+list, same as input but with content converted to tibble
 }
 \description{
-Convert modules raw content (character vector) to tibble
-}
-\details{
-Convert modules raw content (character vector) output of separate_modules() to tibble
+After reading the fastqc_data.txt file, and separating the modules,
+the content of each module is still a character vector. This function
+converts it to a tibble.
 }
 \examples{
 lines <- readLines(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))

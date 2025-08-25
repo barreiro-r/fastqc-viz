@@ -1,15 +1,11 @@
 #' FastQC Parse: Separate Modules
 #'
 #' @description
-#' Separate modules of fastqc_data.txt
+#' After reading the fastqc_data.txt file, this function separates the modules into a list
 #'
-#' @details
-#' From a readLines output of a fastqc_data.txt separate the modules
-#' into a list with the content, status and comments
+#' @param lines array, `readLines(fastqc_data.txt)` output
 #'
-#' @param lines collection from readLines(fastqc_data.txt)
-#'
-#' @return list with modules, each module has content, status; The list also contains comments
+#' @return list, The list contains modules and each module has "content", "status"; The list also contains comments.
 #'
 #' @keywords internal
 #'

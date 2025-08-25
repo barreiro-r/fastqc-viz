@@ -23,6 +23,7 @@
 #' @return html table;
 #'
 #' @keywords html_formater
+#' @keywords internal
 #'
 #' @examples
 #' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))

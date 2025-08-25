@@ -2,7 +2,7 @@
 % Please edit documentation in R/process_gc_data.R
 \name{process_gc_data}
 \alias{process_gc_data}
-\title{Process GC Content Data}
+\title{FastQC-viz: Process GC Content Data}
 \usage{
 process_gc_data(data)
 }
@@ -18,6 +18,9 @@ A list containing three elements:
           based on the generated normal distribution (mode, sd)).
 }
 \description{
+The "Per sequence GC Content" needs to create a theorecial distribution of GC content.
+using the current GC content data parameters to create it.
+
 This function calculates the weighted mean and standard deviation from a data frame
 containing values ('gc_content') and their frequencies ('count'). It then generates
 a new data frame with a normally distributed sample based on these statistics.
@@ -43,3 +46,4 @@ print(head(results$normal_distribution_df))
 print(paste("Total sum of counts in new df:", sum(results$normal_distribution_df$count)))
 
 }
+\keyword{internal}

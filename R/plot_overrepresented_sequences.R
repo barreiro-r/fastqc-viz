@@ -1,16 +1,14 @@
-#' FastQC-viz: Overrepresented Sequences
+#' FastQC-viz: Plot Overrepresented Sequences
 #'
 #' @description
-#' Create plot for "Overrepresented Sequences"
+#' Create HTML elements for "Overrepresented Sequences". Note: not actually a plot.
 #'
-#' @details
-#' Create plot for "Overrepresented Sequences"
+#' @param fastqc_data `parse_fastqc()` output
 #'
-#' @param fastqc_data output from parse_fastqc()
+#' @return character, HTML elements for "Overrepresented Sequences" box.
 #'
-#' @return html character
-#'
-#' @keywords plot
+#' @keywords internal
+#' @keywords html_formater
 #'
 #' @examples
 #' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))

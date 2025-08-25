@@ -1,6 +1,9 @@
-#' Process GC Content Data
+#' FastQC-viz: Process GC Content Data
 #'
 #' @description
+#' The "Per sequence GC Content" needs to create a theorecial distribution of GC content.
+#' using the current GC content data parameters to create it.
+#'
 #' This function calculates the weighted mean and standard deviation from a data frame
 #' containing values ('gc_content') and their frequencies ('count'). It then generates
 #' a new data frame with a normally distributed sample based on these statistics.
@@ -12,6 +15,9 @@
 #'         - `normal_distribution_df`: A new data frame with two columns: 'gc_content'
 #'           (integers from 1 to 100) and 'count' (the frequency of each value
 #'           based on the generated normal distribution (mode, sd)).
+#'
+#' @keywords internal
+#'
 #' @examples
 #' # Create a sample data frame
 #' gc_table <- data.frame(

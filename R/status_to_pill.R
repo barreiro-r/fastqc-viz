@@ -19,6 +19,7 @@
 #' @return status
 #'
 #' @keywords html_formater
+#' @keywords internal
 #'
 #' @examples
 #' status_to_pill("pass")

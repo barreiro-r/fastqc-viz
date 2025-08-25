@@ -3,15 +3,13 @@
 #' @description
 #' Create plot for "Per Sequence Quality Scores"
 #'
-#' @details
-#' Create plot for "Per Sequence Quality Scores"
-#'
-#' @param fastqc_data output from parse_fastqc()
-#' @param output_path path to save png file
+#' @param fastqc_data `parse_fastqc()` output
+#' @param output_path character, path to save the .png file
 #'
 #' @return ggplot
 #'
 #' @keywords plot
+#' @keywords internal
 #'
 #' @examples
 #' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))

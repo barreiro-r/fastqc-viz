@@ -1,14 +1,13 @@
-#' FastQC Parse: Module content to tibble
+#' FastQC-viz: Module content to tibble
 #'
 #' @description
-#' Convert modules raw content (character vector) to tibble
-#'
-#' @details
-#' Convert modules raw content (character vector) output of separate_modules() to tibble
+#' After reading the fastqc_data.txt file, and separating the modules,
+#' the content of each module is still a character vector. This function
+#' converts it to a tibble.
 #'
 #' @param modules list, output of separate_modules()
 #'
-#' @return list of modules with content converted to a tibble
+#' @return list, same as input but with content converted to tibble
 #'
 #' @keywords internal
 #'

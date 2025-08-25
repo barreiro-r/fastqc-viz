@@ -22,10 +22,12 @@ Imports:
     janitor,
     kableExtra,
     purrr,
-    readr,
     scales,
     showtext,
     stats,
     stringr,
     sysfonts,
     tidyr
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

@@ -7,15 +7,16 @@
 status_to_icon(status, add_color = TRUE)
 }
 \arguments{
-\item{status}{character "pass", "warn" or "fail"}
+\item{status}{character, "pass", "warn" or "fail"}
 
-\item{add_color}{boolean add color}
+\item{add_color}{boolean, add color}
 }
 \value{
 status
 }
 \description{
-Create HTML header with the Status
+Create HTML header with the Status. This function is decrepted, it was used to add iconify in
+the report back when it was created with Quarto. Now it was replaced by `status_to_pill()`.
 }
 \details{
 This function generates an HTML `<span>` element styled to look like a status
@@ -32,3 +33,4 @@ status_to_icon("pass")
 }
 \keyword{decrepted}
 \keyword{html_formater}
+\keyword{internal}

@@ -2,14 +2,14 @@
 % Please edit documentation in R/plot_per_base_sequence_quality.R
 \name{plot_per_base_sequence_quality}
 \alias{plot_per_base_sequence_quality}
-\title{FastQC-viz: Theme set fastqcviz}
+\title{FastQC-viz: Plot Per base sequence qualit}
 \usage{
 plot_per_base_sequence_quality(fastqc_data, output_path = NULL)
 }
 \arguments{
-\item{fastqc_data}{output from parse_fastqc()}
+\item{fastqc_data}{`parse_fastqc()` output}
 
-\item{output_path}{path to save png file}
+\item{output_path}{character, path to save the .png file}
 }
 \value{
 ggplot
@@ -17,12 +17,10 @@ ggplot
 \description{
 Create plot for "Per base sequence quality"
 }
-\details{
-Create plot for "Per base sequence quality"
-}
 \examples{
 fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
 plot_per_base_sequence_quality(fastqc_data)
 
 }
+\keyword{internal}
 \keyword{plot}

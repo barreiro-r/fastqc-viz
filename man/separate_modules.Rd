@@ -7,17 +7,13 @@
 separate_modules(lines)
 }
 \arguments{
-\item{lines}{collection from readLines(fastqc_data.txt)}
+\item{lines}{array, `readLines(fastqc_data.txt)` output}
 }
 \value{
-list with modules, each module has content, status; The list also contains comments
+list, The list contains modules and each module has "content", "status"; The list also contains comments.
 }
 \description{
-Separate modules of fastqc_data.txt
-}
-\details{
-From a readLines output of a fastqc_data.txt separate the modules
-into a list with the content, status and comments
+After reading the fastqc_data.txt file, this function separates the modules into a list
 }
 \examples{
 lines <- readLines(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))

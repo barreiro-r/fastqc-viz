@@ -2,25 +2,23 @@
 % Please edit documentation in R/plot_overrepresented_sequences.R
 \name{plot_overrepresented_sequences}
 \alias{plot_overrepresented_sequences}
-\title{FastQC-viz: Overrepresented Sequences}
+\title{FastQC-viz: Plot Overrepresented Sequences}
 \usage{
 plot_overrepresented_sequences(fastqc_data)
 }
 \arguments{
-\item{fastqc_data}{output from parse_fastqc()}
+\item{fastqc_data}{`parse_fastqc()` output}
 }
 \value{
-html character
+character, HTML elements for "Overrepresented Sequences" box.
 }
 \description{
-Create plot for "Overrepresented Sequences"
-}
-\details{
-Create plot for "Overrepresented Sequences"
+Create HTML elements for "Overrepresented Sequences". Note: not actually a plot.
 }
 \examples{
 fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
 plot_overrepresented_sequences(fastqc_data)
 
 }
-\keyword{plot}
+\keyword{html_formater}
+\keyword{internal}

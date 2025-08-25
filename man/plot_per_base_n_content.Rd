@@ -7,9 +7,9 @@
 plot_per_base_n_content(fastqc_data, output_path = NULL)
 }
 \arguments{
-\item{fastqc_data}{output from parse_fastqc()}
+\item{fastqc_data}{`parse_fastqc()` output}
 
-\item{output_path}{path to save png file}
+\item{output_path}{character, path to save the .png file}
 }
 \value{
 ggplot
@@ -17,12 +17,10 @@ ggplot
 \description{
 Create plot for "Per base N content"
 }
-\details{
-Create plot for "Per base N content"
-}
 \examples{
 fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
 plot_per_base_n_content(fastqc_data)
 
 }
+\keyword{internal}
 \keyword{plot}

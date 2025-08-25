@@ -2,23 +2,21 @@
 % Please edit documentation in R/create_header.R
 \name{create_header}
 \alias{create_header}
-\title{FastQC-viz: create_header}
+\title{FastQC-viz: Create Header}
 \usage{
 create_header(fastqc_data, module_name)
 }
 \arguments{
-\item{fastqc_data}{output from fastqc parser}
+\item{fastqc_data}{`fastqc_parser()`, output}
 
-\item{module_name}{name of the module}
+\item{module_name}{character, name of the module}
 }
 \value{
-a HTML header (h1)
+character, The HTML elements that compose the header
 }
 \description{
-Create HTML header with the Status
-}
-\details{
-Create a icon and pretiffy name for box headers
+In the FastQC-viz report, the header of each module is composed by
+a pill indicating the status of the module and the name of the module.
 }
 \examples{
 fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
@@ -26,3 +24,4 @@ create_header(fastqc_data, "per_base_sequence_quality")
 
 }
 \keyword{html_formater}
+\keyword{internal}

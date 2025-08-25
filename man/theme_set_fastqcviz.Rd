@@ -7,9 +7,6 @@
 theme_set_fastqcviz()
 }
 \description{
-Update main theme.
-}
-\details{
 Update ggplot theme settings for all plots.
 }
 \examples{
