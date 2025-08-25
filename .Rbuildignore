@@ -13,3 +13,4 @@ steps
 styles.css
 
 fastqcviz-package.R
+^README\.Rmd$
