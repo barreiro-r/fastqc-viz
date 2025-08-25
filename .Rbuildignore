@@ -15,3 +15,4 @@ styles.css
 fastqcviz_report
 fastqcviz-package.R
 ^README\.Rmd$
+^\.github$

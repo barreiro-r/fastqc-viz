@@ -3,6 +3,7 @@
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/barreiro-r/fastqc-viz/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/barreiro-r/fastqc-viz/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 > [!NOTE]
