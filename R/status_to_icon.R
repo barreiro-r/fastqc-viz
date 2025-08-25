@@ -17,7 +17,7 @@
 #'
 #' @return status
 #'
-#' @keywords html_formater
+#' @keywords html_formater decrepted
 #'
 #' @examples
 #' status_to_icon("pass")

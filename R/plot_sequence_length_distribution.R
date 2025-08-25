@@ -55,7 +55,7 @@ plot_sequence_length_distribution <- function(fastqc_data, output_path = NULL) {
     )
 
   if (!is.null(output_path)) {
-    ggplot2::ggsave(output_path, plot, width = 3, height = 1.75)
+    ggplot2::ggsave(output_path, plot, width = 3 * 1.3, height = 1.75 * 1.3)
   }
 
   return(plot)

@@ -52,6 +52,13 @@ create_fastqcviz_report <- function(
       "/images/plots/per_base_sequence_content.png"
     )
   )
+  plot_per_sequence_quality_scores(
+    fastqc_data,
+    output_path = paste0(
+      output_dir,
+      "/images/plots/per_sequence_quality_scores.png"
+    )
+  )
   plot_per_base_n_content(
     fastqc_data,
     output_path = paste0(output_dir, "/images/plots/per_base_n_content.png")
@@ -118,7 +125,7 @@ create_fastqcviz_report <- function(
     var_basic_statistics
   )
 
-  # --- Add Headings
+  # --- Add Headings and plots
   modules <- c(
     "per_sequence_quality_scores",
     "per_base_sequence_quality",
@@ -140,6 +147,25 @@ create_fastqcviz_report <- function(
       template,
       paste0("<!-- var_header_", module, " -->"),
       var_header
+    )
+
+    if (module != "overrepresented_sequences") {
+      var_plot <- htmltools::tags$img(
+        src = paste0(
+          "images/plots/",
+          module,
+          ".png"
+        )
+      ) |>
+        as.character()
+    } else {
+      var_plot <- plot_overrepresented_sequences(fastqc_data)
+    }
+
+    template <- stringr::str_replace(
+      template,
+      paste0("<!-- var_plot_", module, " -->"),
+      var_plot
     )
   }
 

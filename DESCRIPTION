@@ -17,6 +17,7 @@ Imports:
     ggsci,
     ggtext,
     glue,
+    htmltools,
     janitor,
     kableExtra,
     purrr,
