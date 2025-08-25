@@ -16,3 +16,6 @@ fastqcviz_report
 fastqcviz-package.R
 ^README\.Rmd$
 ^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
