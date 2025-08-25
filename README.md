@@ -27,7 +27,10 @@ visually appealing experience without changing the core analysis.
 **fasqcviz report** :
 [fastqcviz](https://html-preview.github.io/?url=https://github.com/barreiro-r/fastqc-viz/blob/example/example.html)
 
-![](images/before-after.png)
+<figure>
+<img src="man/figures/before-after.png" alt="before-and-after" />
+<figcaption aria-hidden="true">before-and-after</figcaption>
+</figure>
 
 ## Installation
 

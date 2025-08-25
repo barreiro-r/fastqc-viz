@@ -3,4 +3,5 @@ steps/*
 _site/*
 *DS_Store
 _extensions/*
+# docs
 docs

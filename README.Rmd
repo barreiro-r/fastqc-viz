@@ -34,7 +34,7 @@ In **fastqcviz** I tried to give FastQC reports the aesthetic and functional lov
 **fasqcviz report** : [fastqcviz](https://html-preview.github.io/?url=https://github.com/barreiro-r/fastqc-viz/blob/example/example.html)
 
 
-![](images/before-after.png)
+![before-and-after](man/figures/before-after.png)
 
 
 ## Installation
