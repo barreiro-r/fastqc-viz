@@ -1,21 +1,20 @@
 #' FastQC-viz: Create fastqcviz report
 #'
 #' @description
-#' Create HTML header with the Status
+#' Create a fastqcviz report (HTML page)
 #'
 #' @details
-#' Create a icon and pretiffy name for box headers
+#' Create a fastqcviz report (HTML page)
 #'
 #' @param fastqc_path path for the FastQC file
-#' @param module_name name of the module
+#' @param output_dir output directory
 #'
-#' @return a HTML header (h1)
+#' @return Directory with HTML report
 #'
-#' @keywords html_formater
+#' @keywords main
 #'
 #' @examples
-#' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
-#' create_fastqcviz_report(fastqc_data)
+#' create_fastqcviz_report(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
 #'
 #' @export
 #'
@@ -34,32 +33,119 @@ create_fastqcviz_report <- function(
   # Update theme
   theme_set_fastqcviz()
 
+  dir.create(
+    paste0(output_dir, "/images/plots"),
+    showWarnings = FALSE,
+    recursive = TRUE
+  )
   plot_per_base_sequence_quality(
     fastqc_data,
-    output_path = paste0(output_dir, "/per_base_sequence_quality.png")
+    output_path = paste0(
+      output_dir,
+      "/images/plots/per_base_sequence_quality.png"
+    )
   )
   plot_per_base_sequence_content(
     fastqc_data,
-    output_path = paste0(output_dir, "/per_base_sequence_content.png")
+    output_path = paste0(
+      output_dir,
+      "/images/plots/per_base_sequence_content.png"
+    )
   )
   plot_per_base_n_content(
     fastqc_data,
-    output_path = paste0(output_dir, "/per_base_n_content.png")
+    output_path = paste0(output_dir, "/images/plots/per_base_n_content.png")
   )
   plot_per_sequence_gc_content(
     fastqc_data,
-    output_path = paste0(output_dir, "/per_sequence_gc_content.png")
+    output_path = paste0(
+      output_dir,
+      "/images/plots/per_sequence_gc_content.png"
+    )
   )
   plot_sequence_length_distribution(
     fastqc_data,
-    output_path = paste0(output_dir, "/sequence_length_distribution.png")
+    output_path = paste0(
+      output_dir,
+      "/images/plots/sequence_length_distribution.png"
+    )
   )
   plot_sequence_duplication_levels(
     fastqc_data,
-    output_path = paste0(output_dir, "/sequence_duplication_levels.png")
+    output_path = paste0(
+      output_dir,
+      "/images/plots/sequence_duplication_levels.png"
+    )
   )
   plot_adapter_content(
     fastqc_data,
-    output_path = paste0(output_dir, "/adapter_content.png")
+    output_path = paste0(output_dir, "/images/plots/adapter_content.png")
+  )
+
+  # --- Copy resources to output directory
+  file.copy(
+    system.file("extdata", "favicon.svg", package = "fastqcviz"),
+    output_dir
+  )
+  file.copy(
+    system.file("extdata", "styles.css", package = "fastqcviz"),
+    output_dir
+  )
+
+  file.copy(
+    system.file("extdata", "images/logo-light.svg", package = "fastqcviz"),
+    paste0(output_dir, "/images/")
+  )
+
+  # --- Read template HTML
+  template <- readr::read_file(
+    system.file("extdata", "report-template.html", package = "fastqcviz")
+  )
+
+  # --- Add status summary
+  var_status_summary <- plot_status_summary(fastqc_data)
+  template <- stringr::str_replace(
+    template,
+    "<!-- var_status_summary -->",
+    var_status_summary
+  )
+
+  # --- Add Basic Statistics
+  var_basic_statistics <- plot_basic_statistics(fastqc_data)
+  template <- stringr::str_replace(
+    template,
+    "<!-- var_basic_statistics -->",
+    var_basic_statistics
+  )
+
+  # --- Add Headings
+  modules <- c(
+    "per_sequence_quality_scores",
+    "per_base_sequence_quality",
+    "per_base_sequence_content",
+    "per_base_n_content",
+    "per_sequence_gc_content",
+    "sequence_length_distribution",
+    "sequence_duplication_levels",
+    "overrepresented_sequences",
+    "adapter_content"
+  )
+
+  for (module in modules) {
+    var_header <- create_header(
+      fastqc_data,
+      module
+    )
+    template <- stringr::str_replace(
+      template,
+      paste0("<!-- var_header_", module, " -->"),
+      var_header
+    )
+  }
+
+  # Write HTML
+  readr::write_file(
+    template,
+    paste0(output_dir, "/index.html")
   )
 }

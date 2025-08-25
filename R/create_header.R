@@ -39,11 +39,11 @@ create_header <- function(fastqc_data, module_name) {
 
   header <- paste0(
     "<h1>",
-    status_to_icon(status),
+    status_to_pill(status),
     " ",
     module_name_sentence,
     "</h1>"
   )
 
-  cat(header)
+  header
 }

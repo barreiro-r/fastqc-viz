@@ -29,19 +29,11 @@ status_to_pill <- function(status, add_color = TRUE) {
 
   pill_status <- paste0(
     glue::glue(
-      '<span 
+      '<span class="pill" 
       style="
-        font-size: 8px;
-        display: inline-block;
-        padding: 1px;
         background: {fqcviz_colors[stringr::str_c(status,"-light")]};
-        width: 40px;
-        text-align: center;
-        border-radius: 2px;
         border: 1px solid {fqcviz_colors[stringr::str_c(status,"-dark")]};
         color: {fqcviz_colors[stringr::str_c(status,"-dark")]};
-        letter-spacing: .75px;
-        margin-left: 1px;
       ">
         {toupper(status)}
       </span>'

@@ -54,13 +54,21 @@ body {
 hr {
     display: block;
 
+    /* dont think its needed
     margin-left: calc(-1 * var(--box-padding)); 
-    margin-right: calc(-1 * var(--box-padding));
+    margin-right: calc(-1 * var(--box-padding)); */
 
     unicode-bidi: isolate;
     overflow: hidden;
     border-style: inset;
     border-width: 1px;
+
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+
+    border: 0px;
 }
 
 .box.sidebox {
@@ -213,6 +221,19 @@ span.row-title.above {
 
 .title {
     display: none;
+}
+
+.pill {
+    margin-right: 3px;
+    transform: translateY(-2.5px);
+    font-size: 8px;
+    display: inline-block;
+    padding: 1px;
+    width: 40px;
+    text-align: center;
+    border-radius: 2px;
+    letter-spacing: .75px;
+    margin-left: 1px;
 }
 
 span#overrepresented-sequences-count {
