@@ -29,65 +29,12 @@ create_fastqcviz_report <- function(
   dir.create(output_dir, showWarnings = FALSE)
 
   # --- Create Plots
-
-  # Update theme
-  theme_set_fastqcviz()
-
   dir.create(
     paste0(output_dir, "/images/plots"),
     showWarnings = FALSE,
     recursive = TRUE
   )
-  plot_per_base_sequence_quality(
-    fastqc_data,
-    output_path = paste0(
-      output_dir,
-      "/images/plots/per_base_sequence_quality.png"
-    )
-  )
-  plot_per_base_sequence_content(
-    fastqc_data,
-    output_path = paste0(
-      output_dir,
-      "/images/plots/per_base_sequence_content.png"
-    )
-  )
-  plot_per_sequence_quality_scores(
-    fastqc_data,
-    output_path = paste0(
-      output_dir,
-      "/images/plots/per_sequence_quality_scores.png"
-    )
-  )
-  plot_per_base_n_content(
-    fastqc_data,
-    output_path = paste0(output_dir, "/images/plots/per_base_n_content.png")
-  )
-  plot_per_sequence_gc_content(
-    fastqc_data,
-    output_path = paste0(
-      output_dir,
-      "/images/plots/per_sequence_gc_content.png"
-    )
-  )
-  plot_sequence_length_distribution(
-    fastqc_data,
-    output_path = paste0(
-      output_dir,
-      "/images/plots/sequence_length_distribution.png"
-    )
-  )
-  plot_sequence_duplication_levels(
-    fastqc_data,
-    output_path = paste0(
-      output_dir,
-      "/images/plots/sequence_duplication_levels.png"
-    )
-  )
-  plot_adapter_content(
-    fastqc_data,
-    output_path = paste0(output_dir, "/images/plots/adapter_content.png")
-  )
+  create_all_plots(fastqc_data, output_dir)
 
   # --- Copy resources to output directory
   file.copy(
