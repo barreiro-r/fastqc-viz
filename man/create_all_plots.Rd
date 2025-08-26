@@ -24,8 +24,9 @@ Plot functions that not create .png files:
 }
 \examples{
 fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
+\dontrun{
 create_all_plots(fastqc_data, output_dir = "fastqcviz")
-
+}
 }
 \keyword{html_formater}
 \keyword{internal}
