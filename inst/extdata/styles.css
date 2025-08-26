@@ -252,3 +252,25 @@ span#overrepresented-sequences-count {
     text-align: center;
     margin-top: 50px;
 }
+
+.box.overrepresented_sequences {
+    overflow: auto;
+    max-height: 300px;
+}
+
+.overrepresented_sequences td {
+    font-size: 10px;
+}
+
+.overrepresented_sequences td:first-child {
+  font-size: 8px;
+  font-family: monospace;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  letter-spacing: 1px;
+}
+
+.overrepresented_sequences .unit {
+  font-size: 8px;
+  color: var(--warm_grey3)
+}

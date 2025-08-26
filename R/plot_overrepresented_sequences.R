@@ -16,9 +16,33 @@
 #'
 #' @export
 plot_overrepresented_sequences <- function(fastqc_data) {
-  paste0(
-    '<p><span id="overrepresented-sequences-count">',
-    length(fastqc_data$overrepresented_sequences$content),
-    '</span> sequences</p>'
-  )
+  or_data <- fastqc_data$overrepresented_sequences$content
+
+  if (nrow(or_data) == 0) {
+    return(paste0(
+      '<p><span id="overrepresented-sequences-count">',
+      nrow(or_data),
+      '</span> sequences</p>'
+    ))
+  }
+
+  or_data |>
+    dplyr::mutate(
+      percentage = percentage |>
+        as.numeric() |>
+        scales::percent(accuracy = .1) |>
+        stringr::str_remove("\\%"),
+      count = format_large_numbers(as.numeric(count), digits = 1) |>
+        stringr::str_replace(" (.)$", "<span class=\"unit\">\\1</span>")
+    ) |>
+    dplyr::rename(
+      Sequence = sequence,
+      N = count,
+      "%" = percentage,
+      "Possible Source" = "possible_source"
+    ) |>
+    kableExtra::kable(
+      format = "html",
+      escape = FALSE
+    )
 }
