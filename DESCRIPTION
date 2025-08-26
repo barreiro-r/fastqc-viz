@@ -33,4 +33,5 @@ Imports:
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-URL: https://barreiro-r.github.io/fastqc-viz/
+URL: https://barreiro-r.github.io/fastqc-viz/, https://github.com/barreiro-r/fastqc-viz
+BugReports: https://github.com/barreiro-r/fastqc-viz/issues
