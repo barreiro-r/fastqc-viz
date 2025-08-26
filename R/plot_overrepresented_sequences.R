@@ -18,10 +18,10 @@
 plot_overrepresented_sequences <- function(fastqc_data) {
   or_data <- fastqc_data$overrepresented_sequences$content
 
-  if (nrow(or_data) == 0) {
+  if (length(or_data) == 0) {
     return(paste0(
       '<p><span id="overrepresented-sequences-count">',
-      nrow(or_data),
+      length(or_data),
       '</span> sequences</p>'
     ))
   }
