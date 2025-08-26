@@ -95,60 +95,7 @@ to each module.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">fastqc_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="parse_fastqc.html">parse_fastqc</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"SRR622457_2_fastqc.txt"</span>, package <span class="op">=</span> <span class="st">"fastqcviz"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">add_all_plots_list</span><span class="op">(</span><span class="va">fastqc_data</span>, output_dir <span class="op">=</span> <span class="st">"fastqcviz"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_header_per_sequence_quality_scores</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;h1&gt;&lt;span class=\"pill\" \nstyle=\"\n  background: #afe0b7ff;\n  border: 1px solid #2f6638ff;\n  color: #2f6638ff;\n\"&gt;\n  PASS\n&lt;/span&gt; Per sequence quality scores&lt;/h1&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_plot_per_sequence_quality_scores</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;img src=\"images/plots/per_sequence_quality_scores.png\"/&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_header_per_base_sequence_quality</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;h1&gt;&lt;span class=\"pill\" \nstyle=\"\n  background: #afe0b7ff;\n  border: 1px solid #2f6638ff;\n  color: #2f6638ff;\n\"&gt;\n  PASS\n&lt;/span&gt; Per base sequence quality&lt;/h1&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_plot_per_base_sequence_quality</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;img src=\"images/plots/per_base_sequence_quality.png\"/&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_header_per_base_sequence_content</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;h1&gt;&lt;span class=\"pill\" \nstyle=\"\n  background: #afe0b7ff;\n  border: 1px solid #2f6638ff;\n  color: #2f6638ff;\n\"&gt;\n  PASS\n&lt;/span&gt; Per base sequence content&lt;/h1&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_plot_per_base_sequence_content</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;img src=\"images/plots/per_base_sequence_content.png\"/&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_header_per_base_n_content</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;h1&gt;&lt;span class=\"pill\" \nstyle=\"\n  background: #afe0b7ff;\n  border: 1px solid #2f6638ff;\n  color: #2f6638ff;\n\"&gt;\n  PASS\n&lt;/span&gt; Per base n content&lt;/h1&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_plot_per_base_n_content</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;img src=\"images/plots/per_base_n_content.png\"/&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_header_per_sequence_gc_content</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;h1&gt;&lt;span class=\"pill\" \nstyle=\"\n  background: #afe0b7ff;\n  border: 1px solid #2f6638ff;\n  color: #2f6638ff;\n\"&gt;\n  PASS\n&lt;/span&gt; Per sequence gc content&lt;/h1&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_plot_per_sequence_gc_content</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;img src=\"images/plots/per_sequence_gc_content.png\"/&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_header_sequence_length_distribution</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;h1&gt;&lt;span class=\"pill\" \nstyle=\"\n  background: #afe0b7ff;\n  border: 1px solid #2f6638ff;\n  color: #2f6638ff;\n\"&gt;\n  PASS\n&lt;/span&gt; Sequence length distribution&lt;/h1&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_plot_sequence_length_distribution</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;img src=\"images/plots/sequence_length_distribution.png\"/&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_header_sequence_duplication_levels</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;h1&gt;&lt;span class=\"pill\" \nstyle=\"\n  background: #afe0b7ff;\n  border: 1px solid #2f6638ff;\n  color: #2f6638ff;\n\"&gt;\n  PASS\n&lt;/span&gt; Sequence duplication levels&lt;/h1&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_plot_sequence_duplication_levels</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;img src=\"images/plots/sequence_duplication_levels.png\"/&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_header_overrepresented_sequences</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;h1&gt;&lt;span class=\"pill\" \nstyle=\"\n  background: #e8d28fff;\n  border: 1px solid #8d6c08ff;\n  color: #8d6c08ff;\n\"&gt;\n  WARN\n&lt;/span&gt; Overrepresented sequences&lt;/h1&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_plot_overrepresented_sequences</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;p&gt;&lt;span id=\"overrepresented-sequences-count\"&gt;4&lt;/span&gt; sequences&lt;/p&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_header_adapter_content</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;h1&gt;&lt;span class=\"pill\" \nstyle=\"\n  background: #afe0b7ff;\n  border: 1px solid #2f6638ff;\n  color: #2f6638ff;\n\"&gt;\n  PASS\n&lt;/span&gt; Adapter content&lt;/h1&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $var_plot_adapter_content</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;img src=\"images/plots/adapter_content.png\"/&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in add_all_plots_list(fastqc_data, output_dir = "fastqcviz"):</span> Error:fastqcviz does not exist.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Need to have plots created for embed resources</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="create_all_plots.html">create_all_plots</a></span><span class="op">(</span><span class="va">fastqc_data</span>, output_dir <span class="op">=</span> <span class="st">"fastqcviz"</span><span class="op">)</span></span></span>
