@@ -71,7 +71,7 @@ plot_sequence_duplication_levels <- function(fastqc_data, output_path = NULL) {
       expand = ggplot2::expansion(add = c(1.5, 0))
     ) +
     ggplot2::theme(
-      legend.position = c(1, 1),
+      legend.position.inside = c(1, 1),
       legend.justification = c(1, 1),
       legend.key.spacing.y = ggplot2::unit(.1, "cm"),
       legend.key.height = ggplot2::unit(.1, "cm"),

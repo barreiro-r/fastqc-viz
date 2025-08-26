@@ -5,7 +5,8 @@ test_that("check if all plots were created", {
     package = "fastqcviz"
   ))
 
-  create_all_plots(fastqc_data, 'fastqcviz_report')
+  my_temp_dir = paste0(tempdir(), "/test-create_all_plots/fastqcviz_report")
+  create_all_plots(fastqc_data, my_temp_dir)
 
   expected_files <- c(
     "adapter_content.png",
@@ -19,9 +20,9 @@ test_that("check if all plots were created", {
   )
 
   expect_equal(
-    list.files('fastqcviz_report/images/plots'),
+    list.files(paste0(my_temp_dir, '/images/plots')),
     expected_files
   )
 
-  unlink("fastqcviz_report", recursive = TRUE)
+  unlink(my_temp_dir, recursive = TRUE)
 })

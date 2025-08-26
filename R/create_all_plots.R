@@ -33,6 +33,7 @@ create_all_plots <- function(fastqc_data, output_dir) {
   # Add DM Sans font
   sysfonts::font_add_google("DM Sans", "DM Sans")
   showtext::showtext_auto()
+  showtext::showtext_opts(dpi = 300)
 
   dir.create(
     paste0(output_dir, "/images/plots"),

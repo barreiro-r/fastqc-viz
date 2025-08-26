@@ -45,12 +45,6 @@ plot_per_base_n_content <- function(fastqc_data, output_path = NULL) {
       label = scales::percent,
       expand = ggplot2::expansion(mult = .15)
     ) +
-    ggplot2::theme(
-      legend.position = c(1, 1),
-      legend.justification = c(1, 1),
-      legend.key.spacing.y = ggplot2::unit(.1, "cm"),
-      legend.key.height = ggplot2::unit(.1, "cm")
-    ) +
     ggplot2::scale_x_continuous(
       limits = c(0, max(data2plot$base_numeric)),
       breaks = as.integer(seq(

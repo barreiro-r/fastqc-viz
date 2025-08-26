@@ -59,7 +59,7 @@ plot_per_base_sequence_content <- function(fastqc_data, output_path = NULL) {
     ) +
     ggsci::scale_color_lancet(label = toupper) +
     ggplot2::theme(
-      legend.position = c(0.5, 1),
+      legend.position.inside = c(0.5, 1),
       legend.justification = c(0.5, 1),
       legend.direction = "horizontal"
     )

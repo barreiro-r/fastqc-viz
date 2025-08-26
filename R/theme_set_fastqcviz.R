@@ -59,7 +59,7 @@ theme_set_fastqcviz <- function() {
           size = 8,
           color = "grey40"
         ),
-        legend.position = "top",
+        legend.position = "inside",
         plot.margin = ggplot2::margin(15, 15, 15, 15),
       )
   )

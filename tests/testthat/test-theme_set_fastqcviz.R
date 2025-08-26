@@ -4,8 +4,6 @@
 
 # --- Test Suite for theme_set_fastqcviz() ---
 
-context("Testing theme_set_fastqcviz function")
-
 test_that("theme_set_fastqcviz correctly updates the global ggplot2 theme", {
   # --- Setup: Save the current theme to restore it later ---
   # This is crucial for testing a function with global side effects.

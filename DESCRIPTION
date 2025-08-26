@@ -1,6 +1,6 @@
 Package: fastqcviz
 Type: Package
-Title: FastQC report makeover package.
+Title: FastQC report makeover package
 Version: 0.1.0
 Author: Rodrigo Barreiro
 Maintainer: Rodrigo Barreiro <barreiro.r.cram@gmail.com>

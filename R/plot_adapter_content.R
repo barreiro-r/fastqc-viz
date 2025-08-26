@@ -60,7 +60,7 @@ plot_adapter_content <- function(fastqc_data, output_path = NULL) {
       breaks = as.integer(seq(0, max(data2plot$position), length.out = 5)),
     ) +
     ggplot2::theme(
-      legend.position = c(1, 1),
+      legend.position.inside = c(1, 1),
       legend.justification = c(1, 1),
       legend.key.spacing.y = ggplot2::unit(.1, "cm"),
       legend.key.height = ggplot2::unit(.1, "cm"),
