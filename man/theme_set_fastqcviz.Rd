@@ -10,7 +10,13 @@ theme_set_fastqcviz()
 Update ggplot theme settings for all plots.
 }
 \examples{
+fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
+# Before
+plot_per_sequence_gc_content(fastqc_data)
+
+# After
 theme_set_fastqcviz()
+plot_per_sequence_gc_content(fastqc_data)
 
 }
 \keyword{internal}

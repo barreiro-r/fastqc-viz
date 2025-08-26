@@ -17,7 +17,6 @@
 #'     fs::path_package("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"),
 #'     output_dir = "fastqcviz_report",
 #'     embed_resources = FALSE)
-#' }
 #' cat("Files created in", my_temp_dir)
 #' @export
 #'

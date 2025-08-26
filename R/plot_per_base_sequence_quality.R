@@ -12,6 +12,7 @@
 #' @keywords internal
 #'
 #' @examples
+#' theme_set_fastqcviz()
 #' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
 #' plot_per_base_sequence_quality(fastqc_data)
 #'

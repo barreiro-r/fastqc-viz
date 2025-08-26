@@ -25,10 +25,10 @@ Create the FastQC-viz report. FastQC-viz contain all FastQC plots and basic stat
 but with some design improvements.
 }
 \examples{
-\dontrun{
+my_temp_dir <- paste0(tempdir(),"/fastqcviz_report")
 create_fastqcviz_report(
     fs::path_package("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"),
     output_dir = "fastqcviz_report",
     embed_resources = FALSE)
-}
+cat("Files created in", my_temp_dir)
 }
