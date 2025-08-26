@@ -1,5 +1,5 @@
 
-# fastqcviz <a href='https://github.com/barreiro-r/fastqc-viz/'><img src='man/figures/hex.png' align="right" height="138" width="138" /></a>
+# fastqcviz <a href='https://github.com/barreiro-r/fastqc-viz/'><img src='man/figures/logo.png' align="right" height="120" width="138" /></a>
 
 <!-- badges: start -->
 
