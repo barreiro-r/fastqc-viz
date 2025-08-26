@@ -54,6 +54,11 @@ add_all_plots_list <- function(
   output_dir,
   embed_resources = FALSE
 ) {
+  # Raise Error if output dir dont exist
+  if (!dir.exists(output_dir)) {
+    stop("Error:", output_dir, " does not exist.")
+  }
+
   replacements <- list()
 
   modules <- c(

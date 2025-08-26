@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
-#' plot_status_summary(fastqc_data)
+#' plot_basic_statistics(fastqc_data)
 #'
 #' @export
 plot_basic_statistics <- function(fastqc_data) {

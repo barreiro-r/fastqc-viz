@@ -27,6 +27,7 @@
 #'
 
 create_all_plots <- function(fastqc_data, output_dir) {
+  original_theme <- ggplot2::theme_get()
   theme_set_fastqcviz()
 
   # Add DM Sans font
@@ -57,4 +58,6 @@ create_all_plots <- function(fastqc_data, output_dir) {
       do.call(plot_function_name, list(fastqc_data, output_path = output_path))
     }
   )
+
+  on.exit(ggplot2::theme_set(original_theme), add = TRUE)
 }

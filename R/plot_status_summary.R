@@ -31,11 +31,6 @@
 #'
 #' @export
 plot_status_summary <- function(fastqc_data) {
-  # --- Input Validation ---
-  # [TODO]
-
-  # --- Core Calculation ---
-
   fastqc_data[!names(fastqc_data) %in% "comments"] |>
     purrr::map(~ .x[["status"]]) |>
     tidyr::as_tibble() |>
