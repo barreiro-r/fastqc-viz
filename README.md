@@ -1,5 +1,5 @@
 
-# fastqcviz <a href='https://github.com/barreiro-r/fastqc-viz/'><img src='man/figures/logo.png' align="right" height="120" width="138" /></a>
+# fastqcviz <a href='https://github.com/barreiro-r/fastqc-viz/'><img src='man/figures/logo.png' align="right" height="120" width="138"/></a>
 
 <!-- badges: start -->
 
@@ -15,9 +15,9 @@ functional love it deserves, transforming its insights into a more
 visually appealing experience without changing the core analysis. A
 modest re-desing update for the classic FastQC report.
 
-Classic report:
+classic report:
 [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html)
-\| `fastqcviz` report :
+\| ✨ `fastqcviz` report :
 [fastqcviz](https://html-preview.github.io/?url=https://github.com/barreiro-r/fastqc-viz/blob/example/example.html)
 
 <figure>
