@@ -14,13 +14,10 @@
 #'
 #' @examples
 #' format_large_numbers(1234)
-#' #> [1] "1 K"
 #'
 #' format_large_numbers(c(100, 5500, 1200000, -2500000000, 3450000000000))
-#' #> [1] "100"    "5 K"  "1 M"  "-2 B" "3 T"
 #'
 #' format_large_numbers(999999, digits = 2)
-#' #> [1] "1.00 M"
 #' @export
 
 format_large_numbers <- function(nums, digits = 0) {

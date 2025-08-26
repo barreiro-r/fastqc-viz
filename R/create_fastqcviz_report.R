@@ -15,7 +15,7 @@
 #' my_temp_dir <- paste0(tempdir(),"/fastqcviz_report")
 #' create_fastqcviz_report(
 #'     fs::path_package("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"),
-#'     output_dir = "fastqcviz_report",
+#'     output_dir = my_temp_dir,
 #'     embed_resources = FALSE)
 #' cat("Files created in", my_temp_dir)
 #' @export

@@ -35,14 +35,6 @@ These are the modules:
 \examples{
 fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
 fastqc_data$overrepresented_sequences
-# > $content
-# > # A tibble: 1 × 4
-# >   sequence                                           count percentage possible_source
-# >   <chr>                                              <chr> <chr>      <chr>
-# > 1 NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN 15290 0.6116     No Hit
-# >
-# > $status
-# > [1] "warn"
 
 }
 \keyword{internal}
