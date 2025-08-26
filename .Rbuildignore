@@ -17,3 +17,4 @@ styles.css
 ^_pkgdown\.yml$
 ^pkgdown$
 ^docs$
+^cran-comments\.md$
