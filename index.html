@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>FastQC report makeover package. • fastqcviz</title>
+<title>FastQC report makeover package • fastqcviz</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="FastQC report makeover package.">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="FastQC report makeover package">
 <meta name="description" content="A re-desing update for the classic FastQC report.">
 <meta property="og:description" content="A re-desing update for the classic FastQC report.">
 </head>
@@ -47,18 +47,13 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="fastqcviz">fastqcviz<a class="anchor" aria-label="anchor" href="#fastqcviz"></a>
+<div class="page-header"><h1 id="fastqcviz-">fastqcviz <a href="https://github.com/barreiro-r/fastqc-viz/" class="external-link"><img src="reference/figures/hex.png" align="right" height="138" width="138"></a>
+<a class="anchor" aria-label="anchor" href="#fastqcviz-"></a>
 </h1></div>
 <!-- badges: start -->
 
-<blockquote>
-<p>[!NOTE] fastqcviz is currently in development.</p>
-</blockquote>
-<p>Every bioinformatician knows the feeling of seeing that first <a href="https://github.com/s-andrews/FastQC" class="external-link">FastQC</a> report. The iconic yellow boxplot, instantly recognizable, has become a symbol of quality control in genomics.</p>
-<p>While FastQC’s core utility remains unquestionable, its reporting interface, has somes <em>questionable</em> design choices.</p>
-<p>In <strong>fastqcviz</strong> I tried to give FastQC reports the aesthetic and functional love they deserve, transforming their insights into a more visually appealing experience without changing the core analysis.</p>
-<p><strong>Classic report</strong>: <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html" class="external-link">FastQC</a></p>
-<p><strong>fasqcviz report</strong> : <a href="https://html-preview.github.io/?url=https://github.com/barreiro-r/fastqc-viz/blob/example/example.html" class="external-link">fastqcviz</a></p>
+<p>The <code>fastqcviz</code> package was developed to give <a href="https://github.com/s-andrews/FastQC" class="external-link">FastQC</a> reports the aesthetic and functional love it deserves, transforming its insights into a more visually appealing experience without changing the core analysis. A modest re-desing update for the classic FastQC report.</p>
+<p>Classic report: <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html" class="external-link">FastQC</a> | <code>fastqcviz</code> report : <a href="https://html-preview.github.io/?url=https://github.com/barreiro-r/fastqc-viz/blob/example/example.html" class="external-link">fastqcviz</a></p>
 <figure><img src="reference/figures/before-after.png" alt="before-and-after"><figcaption aria-hidden="true">
 before-and-after
 </figcaption></figure><div class="section level2">
@@ -66,8 +61,7 @@ before-and-after
 </h2>
 <p>You can install the development version of fastqcviz from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"barreiro-r/fastqc-viz"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"barreiro-r/fastqc-viz"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
@@ -76,7 +70,10 @@ before-and-after
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://barreiro-r.github.io/fastqc-viz/">fastqcviz</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="reference/create_fastqcviz_report.html">create_fastqcviz_report</a></span><span class="op">(</span><span class="st">"path/to/sample_fastqc/fastqc.txt"</span>, output_dir <span class="op">=</span> <span class="st">"fastqcviz_report"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="reference/create_fastqcviz_report.html">create_fastqcviz_report</a></span><span class="op">(</span></span>
+<span>  fastqc_path <span class="op">=</span> <span class="st">"path/to/sample_fastqc/fastqc_data.txt"</span>,</span>
+<span>  output_dir <span class="op">=</span> <span class="st">"fastqcviz_report"</span>,</span>
+<span>  embed_resources <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -115,6 +112,7 @@ before-and-after
 <ul class="list-unstyled">
 <li><a href="https://github.com/barreiro-r/fastqc-viz/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/barreiro-r/fastqc-viz/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://app.codecov.io/gh/barreiro-r/fastqc-viz" class="external-link"><img src="https://codecov.io/gh/barreiro-r/fastqc-viz/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="lifecycle"></a></li>
 </ul>
 </div>
 

@@ -69,15 +69,12 @@ millions (M), billions (B), and trillions (T).</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">format_large_numbers</span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1 K"</span>
-<span class="r-in"><span><span class="co">#&gt; [1] "1 K"</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">format_large_numbers</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">5500</span>, <span class="fl">1200000</span>, <span class="op">-</span><span class="fl">2500000000</span>, <span class="fl">3450000000000</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"  "6 K"  "1 M"  "-2 B" "3 T" </span>
-<span class="r-in"><span><span class="co">#&gt; [1] "100"    "5 K"  "1 M"  "-2 B" "3 T"</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">format_large_numbers</span><span class="op">(</span><span class="fl">999999</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1000.00 K"</span>
-<span class="r-in"><span><span class="co">#&gt; [1] "1.00 M"</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

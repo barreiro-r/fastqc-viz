@@ -64,108 +64,32 @@ the statistics name in a <code>&lt;span&gt;</code> element and the value.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">fastqc_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="parse_fastqc.html">parse_fastqc</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"SRR622457_2_fastqc.txt"</span>, package <span class="op">=</span> <span class="st">"fastqcviz"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="plot_status_summary.html">plot_status_summary</a></span><span class="op">(</span><span class="va">fastqc_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">plot_basic_statistics</span><span class="op">(</span><span class="va">fastqc_data</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;table&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;tbody&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class="pill" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> style="</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   background: #afe0b7ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   border: 1px solid #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   color: #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   PASS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/span&gt; &lt;span class = "row-title"&gt;Basic statistics&lt;/span&gt; &lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class = 'row-title above'&gt;Filename&lt;/span&gt;SRR622457_2.fastq.gz &lt;/td&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class="pill" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> style="</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   background: #afe0b7ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   border: 1px solid #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   color: #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   PASS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/span&gt; &lt;span class = "row-title"&gt;Per base sequence quality&lt;/span&gt; &lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class = 'row-title above'&gt;File type&lt;/span&gt;Conventional base calls &lt;/td&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class="pill" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> style="</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   background: #afe0b7ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   border: 1px solid #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   color: #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   PASS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/span&gt; &lt;span class = "row-title"&gt;Per sequence quality scores&lt;/span&gt; &lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class = 'row-title above'&gt;Encoding&lt;/span&gt;Sanger / Illumina 1.9 &lt;/td&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class="pill" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> style="</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   background: #afe0b7ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   border: 1px solid #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   color: #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   PASS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/span&gt; &lt;span class = "row-title"&gt;Per base sequence content&lt;/span&gt; &lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class = 'row-title above'&gt;Total Sequences&lt;/span&gt;2,500,000 &lt;/td&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class="pill" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> style="</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   background: #afe0b7ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   border: 1px solid #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   color: #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   PASS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/span&gt; &lt;span class = "row-title"&gt;Per sequence gc content&lt;/span&gt; &lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class = 'row-title above'&gt;Total Bases&lt;/span&gt;252.5 Mbp &lt;/td&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class="pill" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> style="</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   background: #afe0b7ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   border: 1px solid #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   color: #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   PASS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/span&gt; &lt;span class = "row-title"&gt;Per base n content&lt;/span&gt; &lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class = 'row-title above'&gt;Sequences flagged as poor quality&lt;/span&gt;0 &lt;/td&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class="pill" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> style="</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   background: #afe0b7ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   border: 1px solid #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   color: #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   PASS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/span&gt; &lt;span class = "row-title"&gt;Sequence length distribution&lt;/span&gt; &lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class = 'row-title above'&gt;Sequence length&lt;/span&gt;101 &lt;/td&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class="pill" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> style="</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   background: #afe0b7ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   border: 1px solid #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   color: #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   PASS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/span&gt; &lt;span class = "row-title"&gt;Sequence duplication levels&lt;/span&gt; &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class="pill" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> style="</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   background: #e8d28fff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   border: 1px solid #8d6c08ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   color: #8d6c08ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   WARN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/span&gt; &lt;span class = "row-title"&gt;Overrepresented sequences&lt;/span&gt; &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class="pill" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> style="</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   background: #afe0b7ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   border: 1px solid #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   color: #2f6638ff;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   PASS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/span&gt; &lt;span class = "row-title"&gt;Adapter content&lt;/span&gt; &lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; &lt;span class = 'row-title above'&gt;%GC&lt;/span&gt;49 &lt;/td&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/tbody&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/table&gt;</span>

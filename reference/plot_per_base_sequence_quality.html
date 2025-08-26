@@ -61,7 +61,8 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">fastqc_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="parse_fastqc.html">parse_fastqc</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"SRR622457_2_fastqc.txt"</span>, package <span class="op">=</span> <span class="st">"fastqcviz"</span><span class="op">)</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="theme_set_fastqcviz.html">theme_set_fastqcviz</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fastqc_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="parse_fastqc.html">parse_fastqc</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"SRR622457_2_fastqc.txt"</span>, package <span class="op">=</span> <span class="st">"fastqcviz"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">plot_per_base_sequence_quality</span><span class="op">(</span><span class="va">fastqc_data</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot_per_base_sequence_quality-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
