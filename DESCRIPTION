@@ -23,7 +23,6 @@ Imports:
     htmltools,
     janitor,
     kableExtra,
-    lifecycle,
     purrr,
     readr,
     scales,
