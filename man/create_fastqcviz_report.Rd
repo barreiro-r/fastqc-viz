@@ -25,9 +25,10 @@ Create the FastQC-viz report. FastQC-viz contain all FastQC plots and basic stat
 but with some design improvements.
 }
 \examples{
+\dontrun{
 create_fastqcviz_report(
     system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"),
     output_dir = "fastqcviz_report",
     embed_resources = FALSE)
-
+}
 }

@@ -12,11 +12,12 @@
 #'
 #'
 #' @examples
+#' \dontrun{
 #' create_fastqcviz_report(
 #'     system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"),
 #'     output_dir = "fastqcviz_report",
 #'     embed_resources = FALSE)
-#'
+#' }
 #' @export
 #'
 #'

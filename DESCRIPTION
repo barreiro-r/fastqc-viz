@@ -23,6 +23,7 @@ Imports:
     janitor,
     kableExtra,
     purrr,
+    readr,
     scales,
     showtext,
     stats,
