@@ -1,10 +1,10 @@
 Package: fastqcviz
 Type: Package
-Title: FastQCviz
+Title: fastqcviz
 Version: 0.1.0
 Author: Rodrigo Barreiro
 Maintainer: Rodrigo Barreiro <rodrigo@gmail.com>
-Description: FastQC repor makeover package.
+Description: FastQC report makeover package.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
