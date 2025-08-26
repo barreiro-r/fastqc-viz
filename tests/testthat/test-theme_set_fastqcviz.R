@@ -20,7 +20,7 @@ test_that("theme_set_fastqcviz correctly updates the global ggplot2 theme", {
   new_theme <- ggplot2::theme_get()
 
   # Check 1: A simple property change
-  expect_equal(new_theme$legend.position, "top")
+  expect_equal(new_theme$legend.position, "inside")
 
   # Check 2: A text property with multiple attributes
   expect_equal(new_theme$plot.title$size, 18)

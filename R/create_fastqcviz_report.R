@@ -12,12 +12,13 @@
 #'
 #'
 #' @examples
-#' \dontrun{
+#' my_temp_dir <- paste0(tempdir(),"/fastqcviz_report")
 #' create_fastqcviz_report(
-#'     system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"),
+#'     fs::path_package("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"),
 #'     output_dir = "fastqcviz_report",
 #'     embed_resources = FALSE)
 #' }
+#' cat("Files created in", my_temp_dir)
 #' @export
 #'
 #'
@@ -37,23 +38,39 @@ create_fastqcviz_report <- function(
   # --- Copy resources to output directory
   if (!embed_resources) {
     file.copy(
-      system.file("extdata", "favicon.svg", package = "fastqcviz"),
+      fs::path_package(
+        "extdata",
+        "favicon.svg",
+        package = "fastqcviz"
+      ),
       output_dir
     )
     file.copy(
-      system.file("extdata", "styles.css", package = "fastqcviz"),
+      fs::path_package(
+        "extdata",
+        "styles.css",
+        package = "fastqcviz"
+      ),
       output_dir
     )
 
     file.copy(
-      system.file("extdata", "images/logo-light.svg", package = "fastqcviz"),
+      fs::path_package(
+        "extdata",
+        "images/logo-light.svg",
+        package = "fastqcviz"
+      ),
       paste0(output_dir, "/images/")
     )
   }
 
   # --- Read template HTML
   html_template <- readr::read_file(
-    system.file("extdata", "report-template.html", package = "fastqcviz")
+    fs::path_package(
+      "extdata",
+      "report-template.html",
+      package = "fastqcviz"
+    )
   )
 
   # ------ Modify template
@@ -71,7 +88,11 @@ create_fastqcviz_report <- function(
     replacements[["var_css"]] <- paste0(
       "<style>",
       readr::read_file(
-        system.file("extdata", "styles.css", package = "fastqcviz")
+        fs::path_package(
+          "extdata",
+          "styles.css",
+          package = "fastqcviz"
+        )
       ),
       "</style>"
     )
@@ -84,7 +105,11 @@ create_fastqcviz_report <- function(
     replacements[["var_logo"]] <- paste0(
       "<img src=\"data:image/svg+xml;base64,",
       base64enc::base64encode(
-        system.file("extdata", "images/logo-light.svg", package = "fastqcviz")
+        fs::path_package(
+          "extdata",
+          "images/logo-light.svg",
+          package = "fastqcviz"
+        )
       ),
       "\" id=\"logo\" class=\"img-fluid\">"
     )
@@ -98,7 +123,11 @@ create_fastqcviz_report <- function(
     replacements[["var_favicon"]] <- paste0(
       "<link rel=\"icon\" type=\"image/svg+xml\" href=\"data:image/svg+xml;base64,",
       base64enc::base64encode(
-        system.file("extdata", "favicon.svg", package = "fastqcviz")
+        fs::path_package(
+          "extdata",
+          "favicon.svg",
+          package = "fastqcviz"
+        )
       ),
       "\">"
     )
@@ -120,4 +149,8 @@ create_fastqcviz_report <- function(
     final_html,
     paste0(output_dir, "/index.html")
   )
+
+  if (embed_resources) {
+    unlink(paste0(output_dir, "/images"), recursive = TRUE)
+  }
 }
