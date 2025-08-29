@@ -19,7 +19,7 @@ modest re-desing update for the classic FastQC report.
 classic report:
 [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html)
 \| ✨ `fastqcviz` report :
-[fastqcviz](https://html-preview.github.io/?url=https://github.com/barreiro-r/fastqc-viz/blob/example/example.html)
+[fastqcviz](https://html-preview.github.io/?url=https://github.com/barreiro-r/fastqc-viz/blob/man/figures/example.html)
 
 <figure>
 <img src="man/figures/before-after.png"
