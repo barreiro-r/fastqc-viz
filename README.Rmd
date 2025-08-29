@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 
 The `fastqcviz` package was developed to give [FastQC](https://github.com/s-andrews/FastQC) reports the aesthetic and functional love it deserves, transforming its insights into a more visually appealing experience without changing the core analysis. A modest re-desing update for the classic FastQC report. 
 
-classic report: [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html) | ✨ `fastqcviz` report : [fastqcviz](https://html-preview.github.io/?url=https://github.com/barreiro-r/fastqc-viz/blob/man/figures/example.html)
+classic report: [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html) | ✨ `fastqcviz` report : [fastqcviz](https://html-preview.github.io/?url=https://github.com/barreiro-r/fastqc-viz/blob/main/man/figures/example.html)
 
 
 ![Screenshots of original FastQC and fastqcviz reports.](man/figures/before-after.png)
