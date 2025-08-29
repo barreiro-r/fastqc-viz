@@ -7,6 +7,7 @@
 [![Codecov test
 coverage](https://codecov.io/gh/barreiro-r/fastqc-viz/graph/badge.svg)](https://app.codecov.io/gh/barreiro-r/fastqc-viz)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![](https://www.r-pkg.org/badges/version/fastqcviz)](https://www.r-pkg.org/pkg/fastqcviz)
 <!-- badges: end -->
 
 The `fastqcviz` package was developed to give
@@ -21,8 +22,10 @@ classic report:
 [fastqcviz](https://html-preview.github.io/?url=https://github.com/barreiro-r/fastqc-viz/blob/example/example.html)
 
 <figure>
-<img src="man/figures/before-after.png" alt="before-and-after" />
-<figcaption aria-hidden="true">before-and-after</figcaption>
+<img src="man/figures/before-after.png"
+alt="Screenshots of original FastQC and fastqcviz reports." />
+<figcaption aria-hidden="true">Screenshots of original FastQC and
+fastqcviz reports.</figcaption>
 </figure>
 
 ## Installation
@@ -31,7 +34,8 @@ You can install the development version of fastqcviz from
 [GitHub](https://github.com/) with:
 
 ``` r
-devtools::install_github("barreiro-r/fastqc-viz")
+# install.packages("remotes")
+remotes::install_github("barreiro-r/fastqc-viz")
 ```
 
 ## Example

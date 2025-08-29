@@ -277,9 +277,9 @@ span#overrepresented-sequences-count {
 
 footer {
     text-align: center;
-    padding: 1rem;
+    padding: 0.5rem;
     margin-top: 0.5rem;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     color: var(--warm_grey1);
 }
 
