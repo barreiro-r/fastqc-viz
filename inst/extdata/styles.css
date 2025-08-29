@@ -274,3 +274,16 @@ span#overrepresented-sequences-count {
   font-size: 8px;
   color: var(--warm_grey3)
 }
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--warm_grey1);
+}
+
+footer a {
+    color: var(--blue1);
+    text-decoration: none;
+}
