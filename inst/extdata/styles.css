@@ -44,11 +44,24 @@ body {
 .grid-container {
     display: grid;
     grid-template-columns: 0.75fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     gap: 0.5rem;
 
     margin-top: 30px;
     margin-left: 30px;
     margin-right: 30px;
+
+    max-height: 800px;
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    max-height: max-content; 
+  }
+
+  .card-face.card-front.overrepresented_sequences {
+    max-height: 400px;
+  }
 }
 
 hr {
@@ -73,6 +86,8 @@ hr {
 
 .box.sidebox {
     grid-row: span 3;
+    grid-template-rows: max-content;
+    align-items: start;
 }
 
 .box.sidebox p {
@@ -81,9 +96,15 @@ hr {
 }
 
 .box {
+    display: grid;
+    grid-template-rows: auto 1fr;
+
     background-color: #ffffff;
     padding: 0.5rem;
     border: var(--warm_grey4) solid 1px;
+
+    overflow: hidden;
+    position: relative;
 }
 
 .box h1 {
@@ -202,10 +223,10 @@ span.row-title.above {
 
 .box img {
     width: 100%;
-    margin-top: 10px;
+    height: 100%;
     margin-left: -10px;
     margin-right: 0px;
-    margin-bottom: 10px;
+    object-fit: contain;
 }
 
 #logo {
@@ -243,26 +264,34 @@ span#overrepresented-sequences-count {
     font-size: 100px;
     font-weight: 200;
     display: block;
-    margin: auto;
     margin-top: 10px;
     line-height: .8;
 }
 
-.overrepresented_sequences p {
+.card-front.overrepresented_sequences .no-sequence {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
     text-align: center;
-    margin-top: 50px;
+
+    align-items: center;
+    justify-content: center;
 }
 
-.box.overrepresented_sequences {
-    overflow: auto;
-    max-height: 300px;
+.box.overrepresented_sequences  {
+    /* min-height: 0;
+    overflow-y: scroll; */
+    display: flex;
+    flex-direction: column;
 }
 
-.overrepresented_sequences td {
+.card-front.overrepresented_sequences td {
     font-size: 10px;
 }
 
-.overrepresented_sequences td:first-child {
+.card-front.overrepresented_sequences td:first-child {
   font-size: 8px;
   font-family: monospace;
   overflow-wrap: break-word;
@@ -270,7 +299,7 @@ span#overrepresented-sequences-count {
   letter-spacing: 1px;
 }
 
-.overrepresented_sequences .unit {
+.card-front.overrepresented_sequences .unit {
   font-size: 8px;
   color: var(--warm_grey3)
 }
@@ -284,6 +313,123 @@ footer {
 }
 
 footer a {
-    color: var(--blue1);
+    color: var(--blue2);
     text-decoration: none;
 }
+
+a {
+    color: var(--blue2);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--blue4);
+}
+
+/* Card info - Start */
+#card-toggler-per_base_sequence_quality:checked~.card .card-back#help-per_base_sequence_quality {
+    top: 0;
+}
+
+#card-toggler-per_sequence_quality_scores:checked~.card .card-back#help-per_sequence_quality_scores {
+    top: 0;
+}
+
+#card-toggler-per_base_sequence_content:checked~.card .card-back#help-per_base_sequence_content {
+    top: 0;
+}
+
+#card-toggler-per_base_n_content:checked~.card .card-back#help-per_base_n_content {
+    top: 0;
+}
+
+#card-toggler-per_sequence_gc_content:checked~.card .card-back#help-per_sequence_gc_content {
+    top: 0;
+}
+
+#card-toggler-sequence_length_distribution:checked~.card .card-back#help-sequence_length_distribution {
+    top: 0;
+}
+
+#card-toggler-sequence_duplication_levels:checked~.card .card-back#help-sequence_duplication_levels {
+    top: 0;
+}
+
+#card-toggler-overrepresented_sequences:checked~.card .card-back#help-overrepresented_sequences {
+    top: 0;
+}
+
+#card-toggler-adapter_content:checked~.card .card-back#help-adapter_content {
+    top: 0;
+}
+
+.card-toggler {
+    display: none;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    box-sizing: border-box;
+    color: black;
+    text-align: center;
+}
+
+.card-face.card-front.overrepresented_sequences {
+    display: flex;
+    flex: 1;
+    overflow-y: scroll;
+}
+
+.card-front {
+    background: white;
+}
+
+.card-back {
+    background: white;
+    top: 100%;
+    position: absolute;
+    transition: top 0.6s ease;
+    height: 100%;
+    flex-direction: column;
+}
+
+.card-back p {
+    font-size: 0.7em;
+    text-align: left;
+    padding: var(--box-padding);
+}
+
+.card-back td {
+    font-size: 0.7em;
+}
+
+.info-button {
+    position: absolute;
+    right: calc(1.5 * var(--box-padding));
+    top: calc(1.5 * var(--box-padding));
+    /* background-color: var(--warm_grey5); */
+    border: 1px solid var(--warm_grey4);
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--warm_grey4);
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.6s ease;
+}
+
+.info-button:hover {
+    background-color: var(--warm_grey4);
+    color: white;
+}
+/* Card Info - END */

@@ -7,6 +7,7 @@
 #' @param fastqc_path character, path to fastqc_data.txt file
 #' @param output_dir character, output directory
 #' @param embed_resources boolean, TRUE to embed resources into the HTML
+#' @param add_help boolean, TRUE to add help sections
 #'
 #' @return NULL, create `output_dir` with the report (`index.html`)
 #'
@@ -25,7 +26,8 @@
 create_fastqcviz_report <- function(
   fastqc_path,
   output_dir = "fastqcviz_report",
-  embed_resources = FALSE
+  embed_resources = FALSE,
+  add_help = TRUE
 ) {
   fastqc_data <- parse_fastqc(fastqc_path)
 
@@ -79,7 +81,11 @@ create_fastqcviz_report <- function(
   replacements$var_basic_statistics <- plot_basic_statistics(fastqc_data)
   replacements <- c(
     replacements,
-    add_all_plots_list(fastqc_data, output_dir, embed_resources)
+    add_all_plots_list(fastqc_data, output_dir, embed_resources, add_help)
+  )
+  replacements <- c(
+    replacements,
+    add_all_help(add_help)
   )
 
   # --- Add CSS
@@ -141,6 +147,7 @@ create_fastqcviz_report <- function(
     html_template,
     .open = "<!--",
     .close = "-->",
+    .na = ""
   )
 
   # --- Write HTML

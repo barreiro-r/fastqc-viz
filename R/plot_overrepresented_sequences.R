@@ -20,20 +20,23 @@ plot_overrepresented_sequences <- function(fastqc_data) {
 
   if (length(or_data) == 0) {
     return(paste0(
-      '<p><span id="overrepresented-sequences-count">',
+      '<div class ="no-sequence"><span id="overrepresented-sequences-count">',
       length(or_data),
-      '</span> sequences</p>'
+      '</span> sequences</div>'
     ))
   }
 
   or_data |>
     dplyr::mutate(
       percentage = percentage |>
-        as.numeric() |>
-        scales::percent(accuracy = .1) |>
-        stringr::str_remove("\\%"),
+        as.numeric(),
       count = format_large_numbers(as.numeric(count), digits = 1) |>
         stringr::str_replace(" (.)$", "<span class=\"unit\">\\1</span>")
+    ) |>
+    dplyr::mutate(
+      percentage = (percentage / 100) |>
+        scales::percent(accuracy = .1) |>
+        stringr::str_remove("\\%"),
     ) |>
     dplyr::rename(
       Sequence = sequence,

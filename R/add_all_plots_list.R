@@ -52,7 +52,8 @@
 add_all_plots_list <- function(
   fastqc_data,
   output_dir,
-  embed_resources = FALSE
+  embed_resources = FALSE,
+  add_help
 ) {
   # Raise Error if output dir dont exist
   if (!dir.exists(output_dir)) {
@@ -75,7 +76,7 @@ add_all_plots_list <- function(
 
   for (module in modules) {
     header_name <- paste0("var_header_", module)
-    replacements[[header_name]] <- create_header(fastqc_data, module)
+    replacements[[header_name]] <- create_header(fastqc_data, module, add_help)
 
     plot_name <- paste0("var_plot_", module)
     if (module != "overrepresented_sequences") {
