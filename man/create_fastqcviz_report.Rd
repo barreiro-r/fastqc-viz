@@ -7,7 +7,8 @@
 create_fastqcviz_report(
   fastqc_path,
   output_dir = "fastqcviz_report",
-  embed_resources = FALSE
+  embed_resources = FALSE,
+  add_help = TRUE
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ create_fastqcviz_report(
 \item{output_dir}{character, output directory}
 
 \item{embed_resources}{boolean, TRUE to embed resources into the HTML}
+
+\item{add_help}{boolean, TRUE to add help sections}
 }
 \value{
 NULL, create \code{output_dir} with the report (\code{index.html})

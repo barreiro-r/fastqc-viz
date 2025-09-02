@@ -53,7 +53,7 @@ add_all_plots_list <- function(
   fastqc_data,
   output_dir,
   embed_resources = FALSE,
-  add_help
+  add_help = TRUE
 ) {
   # Raise Error if output dir dont exist
   if (!dir.exists(output_dir)) {

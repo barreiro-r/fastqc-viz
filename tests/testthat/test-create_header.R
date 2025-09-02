@@ -6,6 +6,6 @@ test_that("check if header is created properly", {
   ))
   expect_equal(
     create_header(fastqc_data, "per_base_sequence_quality"),
-    "<h1><span class=\"pill\" \nstyle=\"\n  background: #afe0b7ff;\n  border: 1px solid #2f6638ff;\n  color: #2f6638ff;\n\">\n  PASS\n</span> Per base sequence quality</h1>"
+    "<h1><span class=\"pill\" \nstyle=\"\n  background: #afe0b7ff;\n  border: 1px solid #2f6638ff;\n  color: #2f6638ff;\n\">\n  PASS\n</span> Per base sequence quality\n<label class=\"info-button\" for=\"card-toggler-per_base_sequence_quality\">i</label></h1>\n<input type=\"checkbox\" class=\"card-toggler\" id=\"card-toggler-per_base_sequence_quality\"/>"
   )
 })

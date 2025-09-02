@@ -4,12 +4,14 @@
 \alias{create_header}
 \title{FastQC-viz: Create Header}
 \usage{
-create_header(fastqc_data, module_name)
+create_header(fastqc_data, module_name, add_help = TRUE)
 }
 \arguments{
 \item{fastqc_data}{\code{fastqc_parser()}, output}
 
 \item{module_name}{character, name of the module}
+
+\item{add_help}{boolean, add help button to the header}
 }
 \value{
 character, The HTML elements that compose the header

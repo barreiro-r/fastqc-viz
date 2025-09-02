@@ -1,8 +1,7 @@
-#' FastQC-viz: Create Header
+#' FastQC-viz: Create Help
 #'
 #' @description
-#' In the FastQC-viz report, the header of each module is composed by
-#' a pill indicating the status of the module and the name of the module.
+#' Create help sections for each module
 #'
 #' @param module_name character, name of the module
 #'
@@ -12,8 +11,7 @@
 #' @keywords internal
 #'
 #' @examples
-#' fastqc_data <- parse_fastqc(system.file("extdata", "SRR622457_2_fastqc.txt", package = "fastqcviz"))
-#' create_help(fastqc_data, "per_base_sequence_quality")
+#' create_help("per_base_sequence_quality")
 #'
 #' @export
 #'
@@ -94,6 +92,11 @@ create_help <- function(module_name) {
     )
   )
 
+  # raise error if module not found
+  if (!(module_name %in% names(module_help_content))) {
+    stop(paste0("Error: '", module_name, "' module not found"))
+  }
+
   help_html_content <- glue::glue(
     '<div class="card-face card-back" id="help-{module_name}">
     <h2>Surprise!</h2>
@@ -105,7 +108,7 @@ create_help <- function(module_name) {
   status <- c("pass", "warn", "fail")
   pills <- c(status_to_pill(status))
   help <- module_help_content[[module_name]][status]
-  table_html <- tibble::tibble(pills = pills, help = help) |>
+  table_html <- tidyr::tibble(pills = pills, help = help) |>
     kableExtra::kable(format = "html", escape = FALSE, col.names = NULL)
 
   help_html_content <- glue::glue(

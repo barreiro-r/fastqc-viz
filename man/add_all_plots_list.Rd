@@ -4,7 +4,12 @@
 \alias{add_all_plots_list}
 \title{FastQC-viz: Add all plots to the replacement list}
 \usage{
-add_all_plots_list(fastqc_data, output_dir, embed_resources = FALSE)
+add_all_plots_list(
+  fastqc_data,
+  output_dir,
+  embed_resources = FALSE,
+  add_help = TRUE
+)
 }
 \arguments{
 \item{fastqc_data}{\code{fastqc_parser()} output}
